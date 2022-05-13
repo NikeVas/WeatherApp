@@ -8,5 +8,5 @@ import androidx.room.PrimaryKey
 @Entity
 data class User(
     @PrimaryKey val city: String,
-    @ColumnInfo(name = "first_name") val temrature: Double?,
+    @ColumnInfo(name = "temperature") val temperature: Double?,
 )

@@ -45,7 +45,7 @@ class AvatarImageBehavior(context: Context?, attrs: AttributeSet?) :
         return true
     }
 
-    fun calculatePosition(avatar: TextView, progress : Float) {
+    private fun calculatePosition(avatar: TextView, progress : Float) {
         avatar.setY((finalYPosition - startYPosition) * progress + startYPosition)
         avatar.setX((finalXPosition - startXPosition) * progress + startXPosition)
     }

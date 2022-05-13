@@ -3,7 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.20989583333333334" />
+        <entry key="app/src/main/res/drawable/background_rectangle.xml" value="0.234" />
+        <entry key="app/src/main/res/drawable/example_weather_icon.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/ic_background_sunny_day.xml" value="0.19" />
+        <entry key="app/src/main/res/drawable/ic_water_drop.xml" value="0.234" />
+        <entry key="app/src/main/res/drawable/recycle_view_item_background.xml" value="0.181" />
+        <entry key="app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.2289156626506024" />
+        <entry key="app/src/main/res/layout-w936dp/content_scrolling.xml" value="0.21174863387978143" />
         <entry key="app/src/main/res/layout/activity_scrolling.xml" value="0.2341485507246377" />
+        <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.24664310954063604" />
+        <entry key="app/src/main/res/layout/fragment_city_weather.xml" value="0.18177083333333333" />
+        <entry key="app/src/main/res/layout/recycle_view_day_forecast.xml" value="0.2807971014492754" />
+        <entry key="app/src/main/res/layout/recycle_view_item_day_forecast.xml" value="0.2807971014492754" />
+        <entry key="app/src/main/res/layout/week_forecast.xml" value="0.2807971014492754" />
+        <entry key="app/src/main/res/layout/week_list_item.xml" value="0.33" />
       </map>
     </option>
   </component>

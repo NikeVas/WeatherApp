@@ -1,8 +1,9 @@
-package edu.phystech.weather
+package edu.phystech.weather.weatherapi
 
 import android.app.Application
 import android.util.Log
 import androidx.room.Room
+import edu.phystech.weather.AppDatabase
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -14,7 +15,6 @@ class WeatherApp : Application() {
     lateinit var temratureDB: AppDatabase
 
     override fun onCreate() {
-        Log.e("Aboba", "SuperPuperApp Create")
         super.onCreate()
 
         configureRetrofit()
@@ -22,15 +22,15 @@ class WeatherApp : Application() {
     }
 
     private fun configureRetrofit() {
-        val HttpLoggingInterceptor = HttpLoggingInterceptor();
-        HttpLoggingInterceptor.level = okhttp3.logging.HttpLoggingInterceptor.Level.BODY;
+        val httpLoggingInterceptor = HttpLoggingInterceptor();
+        httpLoggingInterceptor.level = okhttp3.logging.HttpLoggingInterceptor.Level.BODY;
 
-        val okHttpClien = OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor)
+        val okHttpClient = OkHttpClient.Builder()
+            .addInterceptor(httpLoggingInterceptor)
             .build()
 
         val retrofit = Retrofit.Builder()
-            .client(okHttpClien)
+            .client(okHttpClient)
             .baseUrl("https://api.openweathermap.org/data/2.5/")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
