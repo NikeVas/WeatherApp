@@ -47,7 +47,7 @@
 
     <include
         android:id="@+id/nested_scroll"
-        layout="@layout/content_scrolling" />
+        layout="@layout/scrolling" />
 
 
     <TextView
