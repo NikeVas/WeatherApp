@@ -39,6 +39,10 @@
         <item name="android:textStyle">bold</item>
         <item name="android:text">21\u00B0"</item>
     </style>
+
+    <style name="TemperatureTextViewStyleBlack" parent="TemperatureTextViewStyle">
+        <item name="android:textColor">@color/black_text</item>
+    </style>
     
     <style name="DayNameStyle" parent="TextFont">
         <item name="android:textSize">17sp</item>
@@ -47,5 +51,12 @@
     
     <style name="HumidityTextViewStyle" parent="TextFont">
         <item name="android:textSize">12sp</item>
+    </style>
+
+
+    <style name="AdditionalText" parent="TextFont">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/gray</item>
     </style>
 </resources>

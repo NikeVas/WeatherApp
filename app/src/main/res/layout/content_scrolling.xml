@@ -43,6 +43,24 @@
             android:background="@drawable/background_rectangle">
         </LinearLayout>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp">
+        </Space>
+
+        <include
+            layout="@layout/sunset_sunrise">
+        </include>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp">
+        </Space>
+
+        <include
+            layout="@layout/uv_wind_humidity">
+        </include>
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

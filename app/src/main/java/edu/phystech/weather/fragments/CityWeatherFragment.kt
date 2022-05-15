@@ -41,6 +41,7 @@ class CityWeatherFragment : Fragment() {
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
+        recyclerView.setNestedScrollingEnabled(false)
 
         val item = LayoutInflater.from(context).inflate(R.layout.week_list_item, null)
         val item2 = LayoutInflater.from(context).inflate(R.layout.week_list_item, null)
