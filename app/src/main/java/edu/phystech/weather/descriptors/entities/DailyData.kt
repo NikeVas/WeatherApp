@@ -25,7 +25,7 @@ data class Day(
     val feels_like_night: Float,
 
     val humidity: Long,
-    val wind_speed: Long,
+    val wind_speed: Float,
     val wind_deg: Long,
     val uvi: Float,
     val icon: String,

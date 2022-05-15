@@ -32,7 +32,7 @@ data class DailyForecastDBEntity(
     @ColumnInfo(name = "feels_like_night") val feels_like_night: Float,
 
     @ColumnInfo(name = "humidity") val humidity: Long,
-    @ColumnInfo(name = "wind_speed") val wind_speed: Long,
+    @ColumnInfo(name = "wind_speed") val wind_speed: Float,
     @ColumnInfo(name = "wind_deg") val wind_deg: Long,
     @ColumnInfo(name = "uvi") val uvi: Float,
     @ColumnInfo(name = "icon") val icon: String,

@@ -1,8 +1,12 @@
 package edu.phystech.weather
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import edu.phystech.weather.databinding.ActivityMainBinding
+import edu.phystech.weather.descriptors.DailyDataDescriptor
+import edu.phystech.weather.descriptors.HourlyDataDescriptor
+import edu.phystech.weather.descriptors.entities.DailyData
 import edu.phystech.weather.fragments.CityWeatherFragment
 
 
@@ -15,11 +19,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val app = application as? App
+        var aboba = HourlyDataDescriptor(app!!.weatherAPI, app.hourlyDatabase)
 
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.fragment_container, CityWeatherFragment())
-            .commit()
+        aboba.data("Moscow") { data ->
+            Log.e("aboba", data.hours[0].dt.toString())
+        }
+
+
+//        supportFragmentManager
+//            .beginTransaction()
+//            .add(R.id.fragment_container, CityWeatherFragment())
+//            .commit()
+
+
 
 //        val superPuperApp = application as? WeatherApp
 

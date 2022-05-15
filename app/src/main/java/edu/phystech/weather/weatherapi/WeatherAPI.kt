@@ -1,6 +1,7 @@
 package edu.phystech.weather.weatherapi
 
 import edu.phystech.weather.CurrentWeatherCity
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -9,12 +10,12 @@ interface WeatherAPI {
     suspend fun currentWeather(
         @Query("q") city: String,
         @Query("appid") appid : String
-    ): CurrentWeatherCity
+    ): Response<CurrentWeatherCity>
 
     @GET("onecall")
     suspend fun oneCallApi(
         @Query("lat") lat: Float,
         @Query("lon") lon: Float,
         @Query("appid") appid : String
-    ) : OneCallData
+    ) : Response<OneCallData>
 }

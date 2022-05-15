@@ -3,32 +3,36 @@ package edu.phystech.weather.descriptors
 import edu.phystech.weather.App
 import edu.phystech.weather.database.forecast.daily.DailyForecastDB
 import edu.phystech.weather.database.forecast.daily.entities.DailyForecastDBEntity
+import edu.phystech.weather.descriptors.entities.DailyData
+import edu.phystech.weather.descriptors.entities.Day
 import edu.phystech.weather.weatherapi.OneCallData
 import edu.phystech.weather.weatherapi.WeatherAPI
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class DailyDataDescriptor(
     private val weatherAPI: WeatherAPI,
     private val database: DailyForecastDB
 ) {
 
-    private var responseData: OneCallData? = null
-    private var tryLoadData = true
-    private var existFreshData: Boolean = false
+
+    private var city_data = hashMapOf<String, DailyData>()
 
     private fun getCityByCoord(lat: Float, lan: Float): String {
         return "Moscow"
     }
 
-    private suspend fun updateDB() {
-        if (!existFreshData) {
-            return;
-        }
+    private fun getCoordByCity(city : String): Pair<Float, Float> {  // lat lon
+        return Pair<Float, Float>(55.9041F, 55.5606F)
+    }
 
-        val city = getCityByCoord(responseData!!.lat!!, responseData!!.lan!!)
-        val timezoneOffset = responseData!!.timezone_offset!!
+    private suspend fun updateDB(city : String, response : OneCallData) {
+        val timezoneOffset = response.timezone_offset!!
+
         database.dailyForecastDao().deleteCity(city)
 
-        for (day in responseData!!.daily!!) {
+        for (day in response.daily!!) {
             database.dailyForecastDao().insert(
                 DailyForecastDBEntity(
                     city,
@@ -44,7 +48,84 @@ class DailyDataDescriptor(
                     day.feels_like!!.morn!!,
                     day.feels_like.day!!,
                     day.feels_like.eve!!,
-                    day.feels_like.night,
+                    day.feels_like.night!!,
+                    day.humidity!!,
+                    day.wind_speed!!,
+                    day.wind_deg!!,
+                    day.uvi!!,
+                    day.weather!![0].icon!!
+                )
+            )
+        }
+    }
+
+
+    private suspend fun tryRequestData(city : String) : OneCallData? {
+        val coord = getCoordByCity(city)
+        return try {
+            val response = weatherAPI.oneCallApi(coord.first, coord.second, App.WEATHER_TOKEN)
+            if (response.code() != 200) {
+                null
+            } else {
+                response.body()
+            }
+        } catch (ex: Exception) {
+            null
+        }
+    }
+
+    private suspend fun LoadFromDB(city: String): List<DailyForecastDBEntity> {
+        return database.dailyForecastDao().getCityWeather(city)
+    }
+
+    private fun convertDBResponseToDailyData(db_data : List<DailyForecastDBEntity>) : DailyData {
+        var days = mutableListOf<Day>()
+        for (day in db_data) {
+            days.add(Day(
+                day.dt,
+                day.sunrise,
+                day.sunset,
+                day.temp_morn,
+                day.temp_day,
+                day.temp_eve,
+                day.temp_night,
+                day.temp_min,
+                day.temp_max,
+                day.feels_like_morn,
+                day.feels_like_day,
+                day.feels_like_eve,
+                day.feels_like_night,
+                day.humidity,
+                day.wind_speed,
+                day.wind_deg,
+                day.uvi,
+                day.icon
+            ))
+        }
+        return DailyData(days)
+    }
+
+    private fun convertServerResponseToDailyData(response: OneCallData) : DailyData {
+        val timezoneOffset = response.timezone_offset!!
+
+        val days = mutableListOf<Day>()
+
+        for (day in response.daily!!) {
+            days.add(
+                Day(
+                    day.dt!! + timezoneOffset,
+                    day.sunrise!!,
+                    day.sunset!!,
+                    day.temp!!.morn!!,
+                    day.temp.day!!,
+                    day.temp.eve!!,
+                    day.temp.night!!,
+                    day.temp.min!!,
+                    day.temp.max!!,
+                    day.feels_like!!.morn!!,
+                    day.feels_like.day!!,
+                    day.feels_like.eve!!,
+                    day.feels_like.night!!,
                     day.humidity!!,
                     day.wind_speed!!,
                     day.wind_deg!!,
@@ -54,20 +135,33 @@ class DailyDataDescriptor(
             )
         }
 
+        return DailyData(days)
     }
 
-    private suspend fun tryLoadData(lat: Float, lan: Float) {
-        if (tryLoadData) {
-            responseData = weatherAPI.oneCallApi(lat, lan, App.WEATHER_TOKEN)
-            tryLoadData = false
-            existFreshData = (responseData != null)
-            updateDB()
+
+    fun data(city : String, callback : DailyDataSetterCallback ) {
+        val scope = CoroutineScope(Dispatchers.IO)
+        scope.launch {
+            val data : DailyData
+            if (city_data.containsKey(city)) {
+                data = city_data[city]!!
+            } else {
+                val response = tryRequestData(city)
+                if (response == null) {
+                    data = convertDBResponseToDailyData(LoadFromDB(city))
+                } else {
+                    updateDB(city, response)
+                    data = convertServerResponseToDailyData(response)
+                }
+            }
+            city_data[city] = data
+            callback(data)
         }
     }
 
-    fun data(city|coord, callback ) : Data
-
-
-
-
+    fun deprecateAll() {
+        city_data.clear()
+    }
 }
+
+typealias DailyDataSetterCallback = (data: DailyData) -> Unit
