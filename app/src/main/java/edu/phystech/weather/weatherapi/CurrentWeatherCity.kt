@@ -14,7 +14,7 @@ data class CurrentWeatherCity (
     @field:Json(name = "sys") val sys: Sys?,
     @field:Json(name = "id") val id: String?,
     @field:Json(name = "name") val name: String?,
-    @field:Json(name = "cod") val cod: Int?,
+    @field:Json(name = "cod") val cod: Long?,
 )
 
 data class Coord(

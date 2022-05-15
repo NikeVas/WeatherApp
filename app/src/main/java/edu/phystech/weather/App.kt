@@ -2,6 +2,8 @@ package edu.phystech.weather
 
 import android.app.Application
 import androidx.room.Room
+import edu.phystech.weather.database.forecast.daily.DailyForecastDB
+import edu.phystech.weather.database.forecast.hourly.HourlyForecastDB
 import edu.phystech.weather.models.TimeTemperatureService
 import edu.phystech.weather.weatherapi.WeatherAPI
 import okhttp3.OkHttpClient
@@ -17,10 +19,17 @@ class App : Application() {
         configureRetrofit()
     }
 
-    val database: AppDatabase by lazy {
+    val dailyDatabase: DailyForecastDB by lazy {
         Room.databaseBuilder(
             applicationContext,
-            AppDatabase::class.java, "weather.db"
+            DailyForecastDB::class.java, "weather.daily"
+        ).build()
+    }
+
+    val hourlyDatabase: HourlyForecastDB by lazy {
+        Room.databaseBuilder(
+            applicationContext,
+            HourlyForecastDB::class.java, "weather.hourly"
         ).build()
     }
 
