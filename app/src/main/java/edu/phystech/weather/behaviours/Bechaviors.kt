@@ -1,60 +1,34 @@
 package edu.phystech.weather
 
 import android.content.Context
+import android.content.res.Resources
+import android.graphics.Color
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.TextView
-import androidx.appcompat.widget.Toolbar
-import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.view.ViewCompat
-import com.google.android.material.appbar.AppBarLayout
+import androidx.compose.ui.unit.Dp
+import edu.phystech.weather.behaviours.CommonBechavior
+import kotlin.math.abs
 import kotlin.properties.Delegates
 
 
 class AvatarImageBehavior(context: Context?, attrs: AttributeSet?) :
-    CoordinatorLayout.Behavior<View?>(context, attrs) {
+    CommonBechavior(context, attrs) {
+
+    init {}
 
 
+    override fun calculatePosition(avatar: View, progress: Float, resources: Resources) {
+        val startXPosition = resources.getDimension(R.dimen.temperature_start_x)
+        val startYPosition = resources.getDimension(R.dimen.temperature_start_y)
+        val finalXPosition = resources.getDimension(R.dimen.temperature_final_x)
+        val finalYPosition = resources.getDimension(R.dimen.temperature_final_y)
 
-    var finalXPosition by Delegates.notNull<Float>()
-    var finalYPosition by Delegates.notNull<Float>()
-    var startXPosition by Delegates.notNull<Float>()
-    var startYPosition by Delegates.notNull<Float>()
-
-
-    init {
-        finalXPosition = 100F
-        finalYPosition = 100F
-        startXPosition = 100F
-        startYPosition = 500F
-    }
-
-    override fun onDependentViewChanged(
-        parent: CoordinatorLayout,
-        avatar: View,
-        dependency: View
-    ): Boolean {
-//        val toolbar_height = parent.findViewById<Toolbar>(R.id.toolbar).height
-//        val height = dependency.height
-//        val current = dependency.bottom.toFloat()
-//
-//        var progress = (current - toolbar_height) / (height - toolbar_height)
-//        if (progress < 0) {
-//            progress = 0F
-//        }
-//        progress = 1 - progress
-//
-//        calculatePosition(avatar, progress)
-//
-        return true
-    }
-
-
-    private fun calculatePosition(avatar: View, progress : Float) {
-        avatar.setY((finalYPosition - startYPosition) * progress + startYPosition)
-        avatar.setX((finalXPosition - startXPosition) * progress + startXPosition)
-        Log.e("aboba", avatar.x.toString() + " " +  avatar.y.toString())
+        avatar.y = (finalYPosition - startYPosition) * progress + startYPosition
+        avatar.x = (finalXPosition - startXPosition) * progress + startXPosition
+        avatar.alpha = abs(progress - 0.5F)
+        (avatar as? TextView)?.setTextColor((Color.rgb( progress,  progress, progress)))
     }
 
 }
