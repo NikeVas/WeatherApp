@@ -19,9 +19,6 @@ class DailyDataDescriptor(
 
     private var city_data = hashMapOf<String, DailyData>()
 
-    private fun getCityByCoord(lat: Float, lan: Float): String {
-        return "Moscow"
-    }
 
     private fun getCoordByCity(city : String): Pair<Float, Float> {  // lat lon
         return Pair<Float, Float>(55.9041F, 55.5606F)
@@ -74,7 +71,7 @@ class DailyDataDescriptor(
         }
     }
 
-    private suspend fun LoadFromDB(city: String): List<DailyForecastDBEntity> {
+    private suspend fun loadFromDB(city: String): List<DailyForecastDBEntity> {
         return database.dailyForecastDao().getCityWeather(city)
     }
 
@@ -148,7 +145,7 @@ class DailyDataDescriptor(
             } else {
                 val response = tryRequestData(city)
                 if (response == null) {
-                    data = convertDBResponseToDailyData(LoadFromDB(city))
+                    data = convertDBResponseToDailyData(loadFromDB(city))
                 } else {
                     updateDB(city, response)
                     data = convertServerResponseToDailyData(response)

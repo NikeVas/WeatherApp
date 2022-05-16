@@ -1,6 +1,7 @@
 package edu.phystech.weather
 
 import android.app.Application
+import android.location.Geocoder
 import androidx.room.Room
 import edu.phystech.weather.database.forecast.daily.DailyForecastDB
 import edu.phystech.weather.database.forecast.hourly.HourlyForecastDB
@@ -10,6 +11,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.*
 
 class App : Application() {
 
