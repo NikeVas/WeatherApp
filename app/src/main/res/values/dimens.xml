@@ -4,12 +4,26 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="wind_value">14sp</dimen>
     <dimen name="wind">17</dimen>
-    <dimen name="temperature_start_x">200dp</dimen>
-    <dimen name="temperature_start_y">200dp</dimen>
-    <dimen name="temperature_final_x">0dp</dimen>
-    <dimen name="temperature_final_y">-25dp</dimen>
-    <dimen name="feels_like_start_x">210dp</dimen>
-    <dimen name="feels_like_start_y">210dp</dimen>
-    <dimen name="feels_like_final_x">1dp</dimen>
-    <dimen name="feels_like_final_y">-15dp</dimen>
+
+    <dimen name="temperature_start_x">40dp</dimen>
+    <dimen name="temperature_start_y">20dp</dimen>
+    <dimen name="temperature_final_x">35dp</dimen>
+    <dimen name="temperature_final_y">10dp</dimen>
+
+    <dimen name="min_max_start_x">40dp</dimen>
+    <dimen name="min_max_start_y">220dp</dimen>
+    <dimen name="min_max_final_x">15dp</dimen>
+    <dimen name="min_max_final_y">125dp</dimen>
+
+    <dimen name="feels_like_final_x">300dp</dimen>
+    <dimen name="feels_like_final_y">120dp</dimen>
+
+    <dimen name="city_x">40dp</dimen>
+    <dimen name="city_y">120dp</dimen>
+
+    <dimen name="holder_x">40dp</dimen>
+    <dimen name="holder_y">120dp</dimen>
+
+    <dimen name="sholder_x">130dp</dimen>
+    <dimen name="sholder_y">60dp</dimen>
 </resources>

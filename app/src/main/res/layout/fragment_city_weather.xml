@@ -13,48 +13,87 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:background="@color/black"
-        android:alpha="0">
+        android:layout_height="300dp"
+        android:alpha="0"
+        android:background="@color/black">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            app:layout_scrollFlags="scroll|snap"
-            android:background="@color/teal_700">
+            android:background="@color/teal_700"
+            app:layout_scrollFlags="scroll|snap">
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
     <TextView
-        android:id="@+id/temrature"
+        android:id="@+id/current_temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="4\u00B0"
+        android:fontFamily="sans-serif-thin"
+        android:text="\u201223\u00B0"
         android:textColor="@android:color/black"
-        android:textSize="100sp"
+        android:textSize="60sp"
         app:layout_anchor="@id/app_bar"
-        app:layout_behavior=".behaviours.TemperatureBehavior"
-        />
+        app:layout_behavior=".behaviours.TemperatureBehavior" />
 
     <TextView
-        android:id="@+id/feels_like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Feels like 180\u00B0"
+        android:fontFamily="sans-serif-thin"
+        android:text="Долгопрудный"
         android:textColor="@android:color/black"
-        android:textSize="50sp"
+        android:textSize="30sp"
         app:layout_anchor="@id/app_bar"
-        app:layout_behavior=".behaviours.FeelsLikeBechavior"
-        />
+        app:layout_behavior=".behaviours.CityBechavior" />
+
+    <LinearLayout
+        android:id="@+id/temp_min_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/app_bar"
+        app:layout_behavior=".behaviours.MinMaxBechavior"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/temp_min_max_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="13\u00B0/8\u00B0"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="пн, 22:09"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Ощущается как \u201232\u00B0"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_anchor="@id/app_bar"
+        app:layout_behavior=".behaviours.FeelsLikeBechavior" />
+
 
 
     <include
         android:id="@+id/nested_scroll"
         layout="@layout/scrolling" />
+
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

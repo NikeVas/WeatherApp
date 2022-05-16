@@ -26,10 +26,10 @@ abstract class CommonBechavior(context: Context?, attrs: AttributeSet?) :
 
         val progress = 1 - (current_pos.toFloat() - min_pos) / (max_pos - min_pos)
 
-        calculatePosition(avatar, progress, parent.resources)
+        calculatePosition(avatar, progress, parent)
 
         return true
     }
 
-    abstract fun calculatePosition(avatar: View, progress: Float, resources: Resources);
+    abstract fun calculatePosition(avatar: View, progress: Float, parent: CoordinatorLayout);
 }
