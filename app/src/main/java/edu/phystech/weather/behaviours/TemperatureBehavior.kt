@@ -1,4 +1,4 @@
-package edu.phystech.weather
+package edu.phystech.weather.behaviours
 
 import android.content.Context
 import android.content.res.Resources
@@ -8,12 +8,13 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.compose.ui.unit.Dp
+import edu.phystech.weather.R
 import edu.phystech.weather.behaviours.CommonBechavior
 import kotlin.math.abs
 import kotlin.properties.Delegates
 
 
-class AvatarImageBehavior(context: Context?, attrs: AttributeSet?) :
+class TemperatureBehavior(context: Context?, attrs: AttributeSet?) :
     CommonBechavior(context, attrs) {
 
     init {}
@@ -25,10 +26,13 @@ class AvatarImageBehavior(context: Context?, attrs: AttributeSet?) :
         val finalXPosition = resources.getDimension(R.dimen.temperature_final_x)
         val finalYPosition = resources.getDimension(R.dimen.temperature_final_y)
 
+        Log.e("aboba", startXPosition.toString() + " " + startYPosition.toString() + " " + finalXPosition.toString() + " " + finalYPosition.toString())
+        Log.e("aboba", avatar.x.toString() + " " + avatar.y.toString())
         avatar.y = (finalYPosition - startYPosition) * progress + startYPosition
         avatar.x = (finalXPosition - startXPosition) * progress + startXPosition
         avatar.alpha = abs(progress - 0.5F)
-        (avatar as? TextView)?.setTextColor((Color.rgb( progress,  progress, progress)))
+//        (avatar as? TextView)?.setTextColor((Color.rgb( progress,  progress, progress)))
+        (avatar as? TextView)?.setTextColor((Color.BLACK * progress).toInt())
     }
 
 }

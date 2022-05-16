@@ -3,6 +3,7 @@ package edu.phystech.weather.behaviours
 import android.content.Context
 import android.content.res.Resources
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import edu.phystech.weather.R

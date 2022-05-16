@@ -4,8 +4,12 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="wind_value">14sp</dimen>
     <dimen name="wind">17</dimen>
-    <dimen name="temperature_start_x">10dp</dimen>
-    <dimen name="temperature_start_y">10dp</dimen>
-    <dimen name="temperature_final_x">50dp</dimen>
-    <dimen name="temperature_final_y">50dp</dimen>
+    <dimen name="temperature_start_x">200dp</dimen>
+    <dimen name="temperature_start_y">200dp</dimen>
+    <dimen name="temperature_final_x">0dp</dimen>
+    <dimen name="temperature_final_y">-25dp</dimen>
+    <dimen name="feels_like_start_x">210dp</dimen>
+    <dimen name="feels_like_start_y">210dp</dimen>
+    <dimen name="feels_like_final_x">1dp</dimen>
+    <dimen name="feels_like_final_y">-15dp</dimen>
 </resources>

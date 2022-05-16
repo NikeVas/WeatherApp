@@ -1,63 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    tools:context=".MainActivity"
+    android:background="@color/transparent_white"
+    >
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/coordinator"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity"
-        android:background="@color/transparent_white"
-        >
+        android:layout_height="400dp"
+        android:background="@color/black"
+        android:alpha="0">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:fitsSystemWindows="true"
-            android:background="@color/black"
-            android:alpha="0">
+            android:layout_height="200dp"
+            app:layout_scrollFlags="scroll|snap"
+            android:background="@color/teal_700">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/toolbar_layout"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:fitsSystemWindows="true"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-                app:expandedTitleMarginEnd="100dp"
-                android:background="@color/teal_700">
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
 
-        </com.google.android.material.appbar.AppBarLayout>
+    <TextView
+        android:id="@+id/temrature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4\u00B0"
+        android:textColor="@android:color/black"
+        android:textSize="100sp"
+        app:layout_anchor="@id/app_bar"
+        app:layout_behavior=".behaviours.TemperatureBehavior"
+        />
+
+    <TextView
+        android:id="@+id/feels_like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Feels like 180\u00B0"
+        android:textColor="@android:color/black"
+        android:textSize="50sp"
+        app:layout_anchor="@id/app_bar"
+        app:layout_behavior=".behaviours.FeelsLikeBechavior"
+        />
 
 
+    <include
+        android:id="@+id/nested_scroll"
+        layout="@layout/scrolling" />
 
 
-
-        <include
-            android:id="@+id/nested_scroll"
-            layout="@layout/scrolling" />
-
-
-        <TextView
-            android:id="@+id/temrature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4\u00B0"
-            android:textColor="@android:color/black"
-            android:textSize="100sp"
-            app:layout_anchor="@id/app_bar"
-            app:layout_behavior=".AvatarImageBehavior"/>
-
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
