@@ -13,7 +13,7 @@
     <dimen name="min_max_start_x">40dp</dimen>
     <dimen name="min_max_start_y">220dp</dimen>
     <dimen name="min_max_final_x">15dp</dimen>
-    <dimen name="min_max_final_y">125dp</dimen>
+    <dimen name="min_max_final_y">123dp</dimen>
 
     <dimen name="feels_like_final_x">300dp</dimen>
     <dimen name="feels_like_final_y">120dp</dimen>
