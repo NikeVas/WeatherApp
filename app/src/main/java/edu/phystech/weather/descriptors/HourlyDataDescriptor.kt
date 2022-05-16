@@ -12,16 +12,15 @@ import edu.phystech.weather.weatherapi.WeatherAPI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 class HourlyDataDescriptor(
     private val weatherAPI: WeatherAPI,
     private val database: HourlyForecastDB
 ) {
     private var city_data = hashMapOf<String, HourlyData>()
-
-    private fun getCityByCoord(lat: Float, lan: Float): String {
-        return "Moscow"
-    }
+    private val mutex = Mutex()
 
     private fun getCoordByCity(city: String): Pair<Float, Float> {  // lat lon
         return Pair<Float, Float>(55.9041F, 55.5606F)
@@ -110,20 +109,22 @@ class HourlyDataDescriptor(
     fun data(city: String, callback: HourlyDataSetterCallback) {
         val scope = CoroutineScope(Dispatchers.IO)
         scope.launch {
-            val data: HourlyData
-            if (city_data.containsKey(city)) {
-                data = city_data[city]!!
-            } else {
-                val response = tryRequestData(city)
-                if (response == null) {
-                    data = convertDBResponseToDailyData(LoadFromDB(city))
+            mutex.withLock {
+                val data: HourlyData
+                if (city_data.containsKey(city)) {
+                    data = city_data[city]!!
                 } else {
-                    updateDB(city, response)
-                    data = convertServerResponseToDailyData(response)
+                    val response = tryRequestData(city)
+                    if (response == null) {
+                        data = convertDBResponseToDailyData(LoadFromDB(city))
+                    } else {
+                        updateDB(city, response)
+                        data = convertServerResponseToDailyData(response)
+                    }
                 }
+                city_data[city] = data
+                callback(data)
             }
-            city_data[city] = data
-            callback(data)
         }
     }
 

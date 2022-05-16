@@ -10,6 +10,8 @@ import edu.phystech.weather.weatherapi.WeatherAPI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 class DailyDataDescriptor(
     private val weatherAPI: WeatherAPI,
@@ -18,6 +20,7 @@ class DailyDataDescriptor(
 
 
     private var city_data = hashMapOf<String, DailyData>()
+    private var mutex = Mutex()
 
 
     private fun getCoordByCity(city : String): Pair<Float, Float> {  // lat lon
@@ -139,20 +142,22 @@ class DailyDataDescriptor(
     fun data(city : String, callback : DailyDataSetterCallback ) {
         val scope = CoroutineScope(Dispatchers.IO)
         scope.launch {
-            val data : DailyData
-            if (city_data.containsKey(city)) {
-                data = city_data[city]!!
-            } else {
-                val response = tryRequestData(city)
-                if (response == null) {
-                    data = convertDBResponseToDailyData(loadFromDB(city))
+            mutex.withLock {
+                val data : DailyData
+                if (city_data.containsKey(city)) {
+                    data = city_data[city]!!
                 } else {
-                    updateDB(city, response)
-                    data = convertServerResponseToDailyData(response)
+                    val response = tryRequestData(city)
+                    if (response == null) {
+                        data = convertDBResponseToDailyData(loadFromDB(city))
+                    } else {
+                        updateDB(city, response)
+                        data = convertServerResponseToDailyData(response)
+                    }
                 }
+                city_data[city] = data
+                callback(data)
             }
-            city_data[city] = data
-            callback(data)
         }
     }
 
