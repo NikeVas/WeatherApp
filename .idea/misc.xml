@@ -6,26 +6,9 @@
         <entry key="../../../../../layout/custom_preview.xml" value="0.20989583333333334" />
         <entry key="../../../../layout/custom_preview.xml" value="0.384375" />
         <entry key="app/src/main/res/drawable/background_rectangle.xml" value="0.234" />
+        <entry key="app/src/main/res/drawable/background_rectangle_city_menu.xml" value="0.1735" />
         <entry key="app/src/main/res/drawable/example_weather_icon.xml" value="0.181" />
-        <entry key="app/src/main/res/drawable/ic_01d.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_01n.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_02d.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_02n.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_03d.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_03n.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_04d.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_04n.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_09d.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_09n.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_10d.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_10n.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_11d.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_11n.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_13d.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_13n.xml" value="0.179" />
         <entry key="app/src/main/res/drawable/ic_background_sunny_day.xml" value="0.19" />
-        <entry key="app/src/main/res/drawable/ic_cloudy_night_1.xml" value="0.179" />
-        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_water_drop.xml" value="0.234" />
         <entry key="app/src/main/res/drawable/recycle_view_item_background.xml" value="0.181" />
         <entry key="app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.2289156626506024" />
@@ -33,16 +16,17 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/activity_scrolling.xml" value="0.2341485507246377" />
         <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.24664310954063604" />
+        <entry key="app/src/main/res/layout/fragment_city_menu.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_city_weather.xml" value="0.394990366088632" />
         <entry key="app/src/main/res/layout/recycle_view_day_forecast.xml" value="0.2807971014492754" />
         <entry key="app/src/main/res/layout/recycle_view_item_day_forecast.xml" value="0.2807971014492754" />
+        <entry key="app/src/main/res/layout/recycler_view_city_item.xml" value="0.1351004702864472" />
         <entry key="app/src/main/res/layout/scrolling.xml" value="0.253125" />
-        <entry key="app/src/main/res/layout/sunset_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/sunset_sunrise.xml" value="0.2644927536231884" />
         <entry key="app/src/main/res/layout/uv_wind_humidity.xml" value="0.2644927536231884" />
         <entry key="app/src/main/res/layout/week_forecast.xml" value="0.2807971014492754" />
         <entry key="app/src/main/res/layout/week_list_item.xml" value="0.33" />
-        <entry key="app/src/main/res/menu/menu_scrolling.xml" value="0.12654980761008977" />
+        <entry key="app/src/main/res/menu/menu_scrolling.xml" value="0.5" />
       </map>
     </option>
   </component>
