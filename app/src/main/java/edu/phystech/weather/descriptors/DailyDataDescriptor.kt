@@ -36,7 +36,8 @@ class DailyDataDescriptor(
             database.dailyForecastDao().insert(
                 DailyForecastDBEntity(
                     city,
-                    day.dt!! + timezoneOffset,
+                    day.dt!! ,
+                    response.timezone_offset!!,
                     day.sunrise!!,
                     day.sunset!!,
                     day.temp!!.morn!!,
@@ -83,6 +84,7 @@ class DailyDataDescriptor(
         for (day in db_data) {
             days.add(Day(
                 day.dt,
+                day.timezone_offset,
                 day.sunrise,
                 day.sunset,
                 day.temp_morn,
@@ -113,7 +115,8 @@ class DailyDataDescriptor(
         for (day in response.daily!!) {
             days.add(
                 Day(
-                    day.dt!! + timezoneOffset,
+                    day.dt!!,
+                    response.timezone_offset!!,
                     day.sunrise!!,
                     day.sunset!!,
                     day.temp!!.morn!!,

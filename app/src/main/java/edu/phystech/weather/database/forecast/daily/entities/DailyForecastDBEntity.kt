@@ -16,6 +16,8 @@ import edu.phystech.weather.weatherapi.Weather
 data class DailyForecastDBEntity(
     @ColumnInfo(name = "city") val city: String,
     @ColumnInfo(name = "dt") val dt: Long,
+    @ColumnInfo(name = "timezone_offset") val timezone_offset: Long,
+
     @ColumnInfo(name = "sunrise") val sunrise: Long,
     @ColumnInfo(name = "sunset") val sunset: Long,
 

@@ -37,7 +37,8 @@
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/daily_humidity"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:paddingRight="8dp"
             android:text="30%"
@@ -46,30 +47,25 @@
         </TextView>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/example_weather_icon"></ImageView>
+            android:id="@+id/daily_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/example_weather_icon">
+        </ImageView>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/example_weather_icon"></ImageView>
+
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/max_min_temp"
+            android:layout_width="63dp"
             android:layout_height="wrap_content"
             android:paddingLeft="8dp"
+            android:text="11°C"
+            android:gravity="right"
             android:theme="@style/TemperatureTextViewStyle">
 
         </TextView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:theme="@style/TemperatureTextViewStyle">
-
-        </TextView>
     </LinearLayout>
 
 

@@ -11,6 +11,7 @@ import androidx.room.Entity
 data class HourlyForecastDBEntity (
     @ColumnInfo(name = "city") val city: String,
     @ColumnInfo(name = "dt") val dt: Long,
+    @ColumnInfo(name = "timezone_offset") val timezone_offset: Long,
 
     @ColumnInfo(name = "temp") val temp: Float,
     @ColumnInfo(name = "feels_like") val feels_like: Float,

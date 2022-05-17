@@ -1,10 +1,10 @@
 package edu.phystech.weather.descriptors
 
+import android.location.Geocoder
+import android.util.Log
 import edu.phystech.weather.App
 import edu.phystech.weather.database.forecast.hourly.HourlyForecastDB
 import edu.phystech.weather.database.forecast.hourly.entity.HourlyForecastDBEntity
-import edu.phystech.weather.descriptors.entities.DailyData
-import edu.phystech.weather.descriptors.entities.Day
 import edu.phystech.weather.descriptors.entities.Hour
 import edu.phystech.weather.descriptors.entities.HourlyData
 import edu.phystech.weather.weatherapi.OneCallData
@@ -17,25 +17,34 @@ import kotlinx.coroutines.sync.withLock
 
 class HourlyDataDescriptor(
     private val weatherAPI: WeatherAPI,
-    private val database: HourlyForecastDB
+    private val database: HourlyForecastDB,
+    private val geocoder: Geocoder
 ) {
-    private var city_data = hashMapOf<String, HourlyData>()
+    private var cityData = hashMapOf<String, HourlyData>()
     private val mutex = Mutex()
 
-    private fun getCoordByCity(city: String): Pair<Float, Float> {  // lat lon
-        return Pair<Float, Float>(55.9041F, 55.5606F)
+    private fun getCoordByCity(city: String): Pair<Float, Float> {
+        val res = geocoder.getFromLocationName(city, 1).get(0)
+
+        val lat = res.latitude
+        val long = res.longitude// lat lon
+        return Pair<Float, Float>(lat.toFloat(), long.toFloat())
     }
 
     private suspend fun updateDB(city: String, response: OneCallData) {
         val timezoneOffset = response.timezone_offset!!
 
+        Log.d("aboba", "Try delete data")
         database.hourlyForecastDao().deleteCity(city)
+        Log.d("aboba", "Deleted data")
+
 
         for (hour in response.hourly!!) {
             database.hourlyForecastDao().insert(
                 HourlyForecastDBEntity(
                     city,
-                    hour.dt!! + timezoneOffset,
+                    hour.dt!!,
+                    response.timezone_offset!!,
                     hour.temp!!,
                     hour.feels_like!!,
                     hour.humidity!!,
@@ -63,7 +72,7 @@ class HourlyDataDescriptor(
         }
     }
 
-    private suspend fun LoadFromDB(city: String): List<HourlyForecastDBEntity> {
+    private suspend fun loadFromDB(city: String): List<HourlyForecastDBEntity> {
         return database.hourlyForecastDao().getCityWeather(city)
     }
 
@@ -73,6 +82,7 @@ class HourlyDataDescriptor(
             hours.add(
                 Hour(
                     hour.dt,
+                    hour.timezone_offset,
                     hour.temp,
                     hour.feels_like,
                     hour.humidity,
@@ -92,6 +102,7 @@ class HourlyDataDescriptor(
             hours.add(
                 Hour(
                     hour.dt!!,
+                    response.timezone_offset!!,
                     hour.temp!!,
                     hour.feels_like!!,
                     hour.humidity!!,
@@ -111,25 +122,25 @@ class HourlyDataDescriptor(
         scope.launch {
             mutex.withLock {
                 val data: HourlyData
-                if (city_data.containsKey(city)) {
-                    data = city_data[city]!!
+                if (cityData.containsKey(city)) {
+                    data = cityData[city]!!
                 } else {
                     val response = tryRequestData(city)
                     if (response == null) {
-                        data = convertDBResponseToDailyData(LoadFromDB(city))
+                        data = convertDBResponseToDailyData(loadFromDB(city))
                     } else {
                         updateDB(city, response)
                         data = convertServerResponseToDailyData(response)
                     }
                 }
-                city_data[city] = data
+                cityData[city] = data
                 callback(data)
             }
         }
     }
 
     fun deprecateAll() {
-        city_data.clear()
+        cityData.clear()
     }
 }
 

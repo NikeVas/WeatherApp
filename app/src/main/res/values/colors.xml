@@ -11,4 +11,5 @@
     <color name="gray">#5E5555</color>
     <color name="black_text">#121111</color>
     <color name="transparent_white">#1A000000</color>
+    <color name="clouds">#C6DEFF</color>
 </resources>

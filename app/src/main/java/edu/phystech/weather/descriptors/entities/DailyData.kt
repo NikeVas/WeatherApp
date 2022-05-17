@@ -9,6 +9,8 @@ data class DailyData(
 
 data class Day(
     val dt: Long,
+    val timezone_offset: Long,
+
     val sunrise: Long,
     val sunset: Long,
 

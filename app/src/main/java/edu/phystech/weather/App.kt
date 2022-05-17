@@ -5,7 +5,8 @@ import android.location.Geocoder
 import androidx.room.Room
 import edu.phystech.weather.database.forecast.daily.DailyForecastDB
 import edu.phystech.weather.database.forecast.hourly.HourlyForecastDB
-import edu.phystech.weather.models.TimeTemperatureService
+import edu.phystech.weather.descriptors.DailyDataDescriptor
+import edu.phystech.weather.descriptors.HourlyDataDescriptor
 import edu.phystech.weather.weatherapi.WeatherAPI
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -14,26 +15,32 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.*
 
 class App : Application() {
+    val weatherAPI: WeatherAPI = configureRetrofit()
 
-    val timeTemperatureService = TimeTemperatureService()
+    lateinit var dailyDatabase: DailyForecastDB
+    lateinit var hourlyDatabase: HourlyForecastDB
+    val geocoder = Geocoder(this, Locale.getDefault())
 
-    val weatherAPI: WeatherAPI by lazy {
-        configureRetrofit()
-    }
-
-    val dailyDatabase: DailyForecastDB by lazy {
-        Room.databaseBuilder(
-            applicationContext,
+    override fun onCreate() {
+        super.onCreate()
+        dailyDatabase = Room.databaseBuilder(
+            this,
             DailyForecastDB::class.java, "weather.daily"
         ).build()
-    }
 
-    val hourlyDatabase: HourlyForecastDB by lazy {
-        Room.databaseBuilder(
-            applicationContext,
+        hourlyDatabase = Room.databaseBuilder(
+            this,
             HourlyForecastDB::class.java, "weather.hourly"
         ).build()
+
+        hourlyDataDescriptor = HourlyDataDescriptor(weatherAPI, hourlyDatabase, geocoder)
+        dailyDataDescriptor = DailyDataDescriptor(weatherAPI, dailyDatabase)
     }
+
+
+    lateinit var hourlyDataDescriptor: HourlyDataDescriptor
+    lateinit var dailyDataDescriptor: DailyDataDescriptor
+
 
     private fun configureRetrofit() : WeatherAPI {
         val httpLoggingInterceptor = HttpLoggingInterceptor();

@@ -8,6 +8,7 @@ data class HourlyData (
 
 data class Hour (
     val dt: Long,
+    val timezone_offset: Long,
 
     val temp: Float,
     val feels_like: Float,
