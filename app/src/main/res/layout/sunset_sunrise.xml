@@ -4,22 +4,73 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@drawable/background_rectangle_white"
+    style="@style/BackgroundRectangle"
     android:padding="8dp"
     android:weightSum="2">
 
-    <include
-        layout="@layout/sunset_item"
+    <LinearLayout
+        android:id="@+id/sunrise"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
-    </include>
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <include
-        layout="@layout/sunset_item"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/AdditionalText"
+            style="@style/SunriseTextView">
+        </TextView>
+
+        <TextView
+            android:id="@+id/sunrise_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SunsetSunriseTimeTextView"
+            >
+        </TextView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:src="@drawable/ic_sunrise">
+
+        </ImageView>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
-    </include>
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/AdditionalText"
+            style="@style/SunsetTextView">
+        </TextView>
+
+        <TextView
+            android:id="@+id/sunset_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SunsetSunriseTimeTextView">
+        </TextView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:src="@drawable/ic_sunset">
+        </ImageView>
+    </LinearLayout>
 
 </LinearLayout>

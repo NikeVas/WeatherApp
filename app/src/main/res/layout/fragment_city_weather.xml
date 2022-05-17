@@ -55,19 +55,16 @@
         android:id="@+id/current_temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-thin"
-        android:text="\u201223\u00B0"
-        android:textColor="@android:color/black"
-        android:textSize="60sp"
+        style="@style/CurrentWeatherTextView"
         app:layout_anchor="@id/app_bar"
         app:layout_behavior=".behaviours.TemperatureBehavior" />
 
     <TextView
+        android:id="@+id/city_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Долгопрудный"
-        android:fontFamily="sans-serif-thin"
-        android:textColor="@android:color/black"
+        style="@style/CurrentWeatherTextView"
         android:textSize="30sp"
         app:layout_anchor="@id/app_bar"
         app:layout_behavior=".behaviours.CityBechavior" />
@@ -84,28 +81,30 @@
             android:id="@+id/temp_min_max_t"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/CurrentWeatherTextView"
             android:text="13\u00B0/8\u00B0"
-            android:textColor="@android:color/black"
             android:textSize="16sp"
              />
 
         <TextView
+            android:id="@+id/current_day_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/CurrentWeatherTextView"
             android:fontFamily="sans-serif"
             android:text="пн, 22:09"
             android:textAlignment="viewStart"
-            android:textColor="@android:color/black"
             android:textSize="16sp" />
 
     </LinearLayout>
 
     <TextView
+        android:id="@+id/feels_like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/CurrentWeatherTextView"
         android:fontFamily="sans-serif"
         android:text="Ощущается как \u201232\u00B0"
-        android:textColor="@android:color/black"
         android:textSize="16sp"
         app:layout_anchor="@id/app_bar"
         app:layout_behavior=".behaviours.FeelsLikeBechavior" />

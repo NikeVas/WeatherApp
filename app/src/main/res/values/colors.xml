@@ -12,4 +12,10 @@
     <color name="black_text">#121111</color>
     <color name="transparent_white">#1A000000</color>
     <color name="clouds">#C6DEFF</color>
+    <color name="sunrise_center">#ffad1e</color>
+    <color name="sunrise_mid">#fad675</color>
+    <color name="sunrise_end">#fef1d3</color>
+    <color name="sunset_center">#ef8e8a</color>
+    <color name="sunset_mid">#fcc9cb</color>
+    <color name="sunset_end">#ffece3</color>
 </resources>

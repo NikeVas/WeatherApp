@@ -12,10 +12,7 @@ import androidx.core.content.res.TypedArrayUtils.getText
 import edu.phystech.weather.R
 import edu.phystech.weather.descriptors.entities.Day
 import edu.phystech.weather.descriptors.entities.Hour
-import edu.phystech.weather.utils.currentTime
-import edu.phystech.weather.utils.kelvinToCelsius
-import edu.phystech.weather.utils.map
-import edu.phystech.weather.utils.unixToDayOfWeek
+import edu.phystech.weather.utils.*
 
 class WeekForecastAdapter(
     val linearLayout: LinearLayout,
@@ -35,7 +32,10 @@ class WeekForecastAdapter(
             linearLayout.removeAllViews()
             items.clear()
         }
+        Log.e("weekForecastFirst", unixToDate(data[0].dt))
+        Log.e("weekForecastFirst", data[0].dt.toString())
         for (day in data.subList(0, 7)) {
+
             val item = layoutInflater.inflate(R.layout.week_list_item, null)
             item.findViewById<TextView>(R.id.day).text = unixToDayOfWeek(day.dt)
             item.findViewById<TextView>(R.id.daily_humidity).text = day.humidity.toString() + "%"

@@ -47,8 +47,9 @@ class MainActivity : AppCompatActivity() {
             == PackageManager.PERMISSION_GRANTED) {
             fusedLocationClient.lastLocation.addOnSuccessListener {
                 val geocoder = Geocoder(this, Locale.getDefault())
-                //startFragment(currentCity(geocoder, it.latitude, it.longitude))
-                startFragment("Алматы")
+                Log.e("mainactivity", currentCity(geocoder, it.latitude, it.longitude))
+                startFragment(currentCity(geocoder, it.latitude, it.longitude))
+                //startFragment("Алматы")
             }
         } else {
             requestLocationPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
@@ -73,7 +74,7 @@ class MainActivity : AppCompatActivity() {
     private fun startFragment(city: String) {
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragment_container, CityWeatherFragment.newInstance(city))
+            .replace(R.id.fragment_container, CityWeatherFragment.newInstance(city))
             .commit()
     }
 }

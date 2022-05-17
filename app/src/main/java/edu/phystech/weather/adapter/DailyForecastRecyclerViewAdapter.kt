@@ -8,7 +8,7 @@ import edu.phystech.weather.databinding.RecycleViewItemDayForecastBinding
 import edu.phystech.weather.descriptors.entities.Hour
 import edu.phystech.weather.utils.*
 
-class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.TimeTemperatureViewHolder>() {
+class DailyForecastRecyclerViewAdapter : RecyclerView.Adapter<DailyForecastRecyclerViewAdapter.TimeTemperatureViewHolder>() {
 
     var data: List<Hour> = emptyList()
         set(value) {

@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_rectangle_white"
+    style="@style/BackgroundRectangle"
     android:padding="16dp"
     android:weightSum="3">
 
@@ -15,7 +15,7 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_uv_index">
         </ImageView>
@@ -23,15 +23,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/UV_index"
-            android:theme="@style/TemperatureTextViewStyleBlack">
+            style="@style/UVWindHumidityNamesTextView"
+            android:text="@string/UV_index">
         </TextView>
 
         <TextView
+            android:id="@+id/uv_index"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Низкий"
-            android:theme="@style/AdditionalText">
+            style="@style/UVWindHumidityValuesTextView">
         </TextView>
 
     </LinearLayout>
@@ -43,7 +44,7 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_wind">
         </ImageView>
@@ -52,14 +53,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/wind"
-            android:theme="@style/TemperatureTextViewStyleBlack">
+            style="@style/UVWindHumidityNamesTextView">
         </TextView>
 
         <TextView
+            android:id="@+id/wind_rate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="23 км/ч"
-            android:theme="@style/AdditionalText">
+            style="@style/UVWindHumidityValuesTextView">
         </TextView>
 
     </LinearLayout>
@@ -72,7 +74,7 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="60dp"
+            android:layout_width="40dp"
             android:layout_height="60dp"
             android:src="@drawable/ic_water_drop">
         </ImageView>
@@ -81,14 +83,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/humidity"
-            android:theme="@style/TemperatureTextViewStyleBlack">
+            style="@style/UVWindHumidityNamesTextView">
         </TextView>
 
         <TextView
+            android:id="@+id/humidity_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="57%"
-            android:theme="@style/AdditionalText">
+            style="@style/UVWindHumidityValuesTextView">
         </TextView>
 
     </LinearLayout>

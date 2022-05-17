@@ -1,5 +1,6 @@
 package edu.phystech.weather.descriptors
 
+import android.location.Geocoder
 import edu.phystech.weather.App
 import edu.phystech.weather.database.forecast.daily.DailyForecastDB
 import edu.phystech.weather.database.forecast.daily.entities.DailyForecastDBEntity
@@ -15,7 +16,8 @@ import kotlinx.coroutines.sync.withLock
 
 class DailyDataDescriptor(
     private val weatherAPI: WeatherAPI,
-    private val database: DailyForecastDB
+    private val database: DailyForecastDB,
+    private val geocoder: Geocoder
 ) {
 
 
@@ -24,7 +26,11 @@ class DailyDataDescriptor(
 
 
     private fun getCoordByCity(city : String): Pair<Float, Float> {  // lat lon
-        return Pair<Float, Float>(55.9041F, 55.5606F)
+        val res = geocoder.getFromLocationName(city, 1).get(0)
+
+        val lat = res.latitude
+        val long = res.longitude// lat lon
+        return Pair<Float, Float>(lat.toFloat(), long.toFloat())
     }
 
     private suspend fun updateDB(city : String, response : OneCallData) {

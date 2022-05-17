@@ -1,37 +1,22 @@
 package edu.phystech.weather.descriptors
 
-import android.location.Geocoder
-import androidx.room.Update
 import edu.phystech.weather.App
 import edu.phystech.weather.CurrentWeatherCity
 import edu.phystech.weather.descriptors.entities.CurrentData
-import edu.phystech.weather.descriptors.entities.DailyData
-import edu.phystech.weather.descriptors.entities.Day
-import edu.phystech.weather.weatherapi.OneCallData
 import edu.phystech.weather.weatherapi.WeatherAPI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CurrentDataDescriptor(
-    private val weatherAPI: WeatherAPI,
-    private val geocoder: Geocoder
+    private val weatherAPI: WeatherAPI
 ) {
 
-    private var city_data = hashMapOf<String, CurrentData?>()
+    private var cityData = hashMapOf<String, CurrentData?>()
 
-    private fun getCoordByCity(city: String): Pair<Float, Float> {
-        val res = geocoder.getFromLocationName(city, 1).get(0)
-
-        val lat = res.latitude
-        val long = res.longitude// lat lon
-        return Pair<Float, Float>(lat.toFloat(), long.toFloat())
-    }
-
-    private suspend fun tryRequestData(city : String) : OneCallData? {
-        val coord = getCoordByCity(city)
+    private suspend fun tryRequestData(city : String) : CurrentWeatherCity? {
         return try {
-            val response = weatherAPI.oneCallApi(coord.first, coord.second, App.WEATHER_TOKEN)
+            val response = weatherAPI.currentWeather(city, App.WEATHER_TOKEN)
             if (response.code() != 200) {
                 null
             } else {
@@ -42,24 +27,19 @@ class CurrentDataDescriptor(
         }
     }
 
-    private fun convertServerResponseToCurrentData(response: OneCallData) : CurrentData? {
-        val current = response.current!!
+    private fun convertServerResponseToCurrentData(response: CurrentWeatherCity) : CurrentData? {
         return CurrentData(
-            current.sunrise!!,
-            current.sunset!!,
+            response.sys!!.sunrise!!,
+            response.sys.sunset!!,
 
-            current.temp!!,
-            response.daily!![0].temp!!.min!!,
-            response.daily[0].temp!!.max!!,
+            response.main!!.temp!!,
+            response.main.feels_like!!,
+            response.main.humidity!!,
 
+            response.wind!!.speed!!,
+            response.wind.deg!!,
 
-            current.feels_like!!,
-            current.humidity!!,
-
-            current.wind_speed!!,
-            current.wind_deg!!,
-            current.uvi!!,
-            current.weather!![0].icon!!
+            response.weather!![0].icon!!
         )
     }
 
@@ -73,13 +53,13 @@ class CurrentDataDescriptor(
             } else {
                 data = null
             }
-            city_data[city] = data
+            cityData[city] = data
             callback(data)
         }
     }
 
     fun deprecateAll() {
-        city_data.clear()
+        cityData.clear()
     }
 }
 

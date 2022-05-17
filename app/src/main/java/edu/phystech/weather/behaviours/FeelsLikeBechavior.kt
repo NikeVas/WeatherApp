@@ -24,7 +24,7 @@ class FeelsLikeBechavior(context: Context?, attrs: AttributeSet?) :
 
         avatar.y = (finalYPosition - startYPosition) * progress + startYPosition
         avatar.x = (finalXPosition - startXPosition) * progress + startXPosition
-        avatar.alpha = 1 - 2F * progress
+        avatar.alpha = 1 - 3F * progress
     }
 
 }

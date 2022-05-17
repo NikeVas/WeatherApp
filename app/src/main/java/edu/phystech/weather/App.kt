@@ -5,6 +5,7 @@ import android.location.Geocoder
 import androidx.room.Room
 import edu.phystech.weather.database.forecast.daily.DailyForecastDB
 import edu.phystech.weather.database.forecast.hourly.HourlyForecastDB
+import edu.phystech.weather.descriptors.CurrentDataDescriptor
 import edu.phystech.weather.descriptors.DailyDataDescriptor
 import edu.phystech.weather.descriptors.HourlyDataDescriptor
 import edu.phystech.weather.weatherapi.WeatherAPI
@@ -36,12 +37,14 @@ class App : Application() {
         geocoder = Geocoder(this, Locale.getDefault())
 
         hourlyDataDescriptor = HourlyDataDescriptor(weatherAPI, hourlyDatabase, geocoder)
-        dailyDataDescriptor = DailyDataDescriptor(weatherAPI, dailyDatabase)
+        dailyDataDescriptor = DailyDataDescriptor(weatherAPI, dailyDatabase, geocoder)
+        currentDataDescriptor = CurrentDataDescriptor(weatherAPI)
     }
 
 
     lateinit var hourlyDataDescriptor: HourlyDataDescriptor
     lateinit var dailyDataDescriptor: DailyDataDescriptor
+    lateinit var currentDataDescriptor: CurrentDataDescriptor
 
 
     private fun configureRetrofit() : WeatherAPI {

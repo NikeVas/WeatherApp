@@ -16,6 +16,6 @@ class CityBechavior (context: Context?, attrs: AttributeSet?) :
     override fun calculatePosition(avatar: View, progress: Float, parent: CoordinatorLayout) {
         avatar.y = parent.resources.getDimension(R.dimen.city_y)
         avatar.x = parent.resources.getDimension(R.dimen.city_x)
-        avatar.alpha = 1 - 2F * progress
+        avatar.alpha = 1 - 3F * progress
     }
 }

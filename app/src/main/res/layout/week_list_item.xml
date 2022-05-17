@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="4dp">
+    android:paddingHorizontal="8dp">
 
     <TextView
         android:id="@+id/day"
-        android:theme="@style/DayNameStyle"
+        style="@style/DailyForecastLinearLayoutDayTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="понедельник"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.021"
@@ -33,7 +32,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_water_drop"></ImageView>
+            android:src="@drawable/ic_water_drop">
+        </ImageView>
 
 
         <TextView
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:paddingRight="8dp"
             android:text="30%"
-            android:theme="@style/HumidityTextViewStyle">
+            android:theme="@style/DailyForecastLinearLayoutHumidityTextViewStyle">
 
         </TextView>
 
@@ -60,9 +60,8 @@
             android:layout_width="63dp"
             android:layout_height="wrap_content"
             android:paddingLeft="8dp"
-            android:text="11°C"
             android:gravity="right"
-            android:theme="@style/TemperatureTextViewStyle">
+            android:theme="@style/DailyForecastLinearLayoutTemperatureTextViewStyle">
 
         </TextView>
 
