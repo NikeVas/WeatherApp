@@ -32,7 +32,19 @@ class CurrentDataDescriptor(
     }
 
     private fun convertServerResponseToCurrentData(response: CurrentWeatherCity) : CurrentData? {
-        return null
+        CurrentData(
+            response.sys!!.sunrise!!,
+            response.sys.sunset!!,
+
+            response.main!!.temp!!,
+            response.main.feels_like!!,
+            response.main.humidity!!,
+
+            response.wind!!.speed!!,
+            response.wind.deg!!,
+
+            response.weather!![0].icon!!
+        )
     }
 
     fun data(city : String, callback : CurrentDataSetterCallback) {

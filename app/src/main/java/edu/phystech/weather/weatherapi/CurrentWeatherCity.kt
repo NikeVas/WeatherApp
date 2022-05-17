@@ -31,15 +31,16 @@ data class Weather(
 
 data class Main(
     @field:Json(name = "temp") val temp: Float?,
+    @field:Json(name = "feels_like") val feels_like: Float?,
     @field:Json(name = "pressure") val pressure: Float?,
-    @field:Json(name = "humidity") val humidity: Float?,
+    @field:Json(name = "humidity") val humidity: Long?,
     @field:Json(name = "temp_min") val temp_min: Float?,
     @field:Json(name = "temp_max") val temp_max: Float?,
 )
 
 data class Wind(
     @field:Json(name = "speed") val speed: Float?,
-    @field:Json(name = "deg") val deg: Float?,
+    @field:Json(name = "deg") val deg: Long?,
 )
 
 data class Clouds(
@@ -51,8 +52,8 @@ data class Sys(
     @field:Json(name = "id") val id: Float?,
     @field:Json(name = "message") val message: Float?,
     @field:Json(name = "country") val country: String?,
-    @field:Json(name = "sunrise") val sunrise: Float?,
-    @field:Json(name = "sunset") val sunset: Float?,
+    @field:Json(name = "sunrise") val sunrise: Long?,
+    @field:Json(name = "sunset") val sunset: Long?,
 )
 
 
