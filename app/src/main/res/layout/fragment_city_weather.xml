@@ -19,9 +19,20 @@
         app:layout_constraintVertical_bias="0.0"
         app:menu="@menu/menu_scrolling"
         app:navigationIcon="@mipmap/ic_launcher"
-        app:title="Долгопрудный"
         app:layout_anchor="@id/app_bar"
-        app:layout_behavior=".behaviours.ToolbarBechavior"/>
+        app:layout_behavior=".behaviours.ToolbarBechavior">
+
+        <TextView
+            android:id="@+id/tool_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="Долгопрудный"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+             />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -33,7 +44,7 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:background="@color/teal_700"
             app:layout_scrollFlags="scroll|snap">
 

@@ -19,7 +19,7 @@ class App : Application() {
 
     lateinit var dailyDatabase: DailyForecastDB
     lateinit var hourlyDatabase: HourlyForecastDB
-    val geocoder = Geocoder(this, Locale.getDefault())
+    lateinit var geocoder  : Geocoder
 
     override fun onCreate() {
         super.onCreate()
@@ -32,6 +32,8 @@ class App : Application() {
             this,
             HourlyForecastDB::class.java, "weather.hourly"
         ).build()
+
+        geocoder = Geocoder(this, Locale.getDefault())
 
         hourlyDataDescriptor = HourlyDataDescriptor(weatherAPI, hourlyDatabase, geocoder)
         dailyDataDescriptor = DailyDataDescriptor(weatherAPI, dailyDatabase)
