@@ -38,7 +38,7 @@ class App : Application() {
 
         hourlyDataDescriptor = HourlyDataDescriptor(weatherAPI, hourlyDatabase, geocoder)
         dailyDataDescriptor = DailyDataDescriptor(weatherAPI, dailyDatabase, geocoder)
-        currentDataDescriptor = CurrentDataDescriptor(weatherAPI)
+        currentDataDescriptor = CurrentDataDescriptor(weatherAPI, geocoder)
     }
 
 

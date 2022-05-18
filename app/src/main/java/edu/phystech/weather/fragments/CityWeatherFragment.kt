@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import edu.phystech.weather.App
+import edu.phystech.weather.R
 import edu.phystech.weather.adapter.CurrentWeatherAdapter
 import edu.phystech.weather.adapter.DailyForecastRecyclerViewAdapter
 import edu.phystech.weather.adapter.WeekForecastAdapter
@@ -96,9 +97,10 @@ class CityWeatherFragment : Fragment() {
                 binding.nestedScroll.sunsetSunrise.sunriseTime.text = unixToHours(day.sunrise)
                 binding.nestedScroll.sunsetSunrise.sunsetTime.text = unixToHours(day.sunset)
                 binding.nestedScroll.uvWindHumidity.uvIndex.text = day.uvi.toString()
-                binding.tempMinMaxT.text = kelvinToCelsius(day.temp_max).toString() + "\u00B0/" + kelvinToCelsius(day.temp_min).toString() + "\u00B0"
+                binding.tempMinMaxT.text = toTempMinMaxFormat(day.temp_max, day.temp_min)
                 binding.cityName.text = city
-                binding.currentDayTime.text = abbreviateDay(currentDayOfWeek()).lowercase() + ", " //TODO (time)
+                binding.currentDay.text = abbreviateDay(currentDayOfWeek()).lowercase() + ", " //TODO (time)
+                binding.currentTime.timeZone = city
             }
         }
     }
@@ -108,7 +110,7 @@ class CityWeatherFragment : Fragment() {
         currentWeatherViewModel.data.observe(viewLifecycleOwner, Observer {
             currentWeatherAdapter.data = it
             binding.currentTemperature.text = kelvinToCelsius(it.temp).toString() + "\u00B0"
-            binding.feelsLike.text = "Ощущается как " + kelvinToCelsius(it.feels_like).toString() + "\u00B0"
+            binding.feelsLike.text = getString(R.string.feels_like) + kelvinToCelsius(it.feels_like).toString() + "\u00B0"
         })
 
     }

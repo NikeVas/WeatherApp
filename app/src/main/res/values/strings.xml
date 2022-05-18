@@ -7,4 +7,6 @@
     <string name="today">Сегодня</string>
     <string name="sunset">Закат</string>
     <string name="sunrise">Восход</string>
+    <string name="feels_like">Ощущается как </string>
+    <string name="degree">\u00B0</string>
 </resources>
