@@ -57,7 +57,7 @@
 
         <TextView
             android:id="@+id/max_min_temp"
-            android:layout_width="66dp"
+            android:layout_width="88dp"
             android:layout_height="wrap_content"
             android:paddingLeft="8dp"
             android:gravity="right"

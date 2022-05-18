@@ -67,7 +67,6 @@ class App : Application() {
     }
 
     fun setStartStyles() {
-        setTheme(R.style.)
     }
 
     fun setFinalStyles() {

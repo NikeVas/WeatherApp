@@ -33,6 +33,7 @@
 
     <style name="HourlyForecastRecyclerViewTimeTextView" parent="TextFont">
         <item name="android:textColor">?attr/colorSecondary</item>
+        <item name="fontFamily">sans-serif-medium</item>
         <item name="android:textSize">12sp</item>
     </style>
 
@@ -40,6 +41,7 @@
     <style name="HourlyForecastRecyclerViewTemperatureTextView" parent="TextFont">
         <item name="android:textSize">15sp</item>
         <item name="android:text">21\u00B0"</item>
+        <item name="fontFamily">sans-serif-medium</item>
         <item name="android:textColor">?attr/colorPrimary</item>
     </style>
 
@@ -52,12 +54,14 @@
     
     <style name="DailyForecastLinearLayoutHumidityTextViewStyle" parent="TextFont">
         <item name="android:textSize">12sp</item>
+        <item name="fontFamily">sans-serif-light</item>
         <item name="android:textColor">?attr/colorSecondary</item>
     </style>
 
     <style name="DailyForecastLinearLayoutTemperatureTextViewStyle" parent="TextFont">
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:text">21/8\u00B0"</item>
+        <item name="fontFamily">sans-serif-medium</item>
         <item name="android:textColor">?attr/colorPrimary</item>
     </style>
 
@@ -97,10 +101,24 @@
         <item name="android:text">\u201223\u00B0</item>
     </style>
 
+    <style name="CityTextView" parent="TextFont">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="fontFamily">sans-serif-thin</item>
+        <item name="android:text">\u201223\u00B0</item>
+    </style>
+
+    <style name="ToolbarCityTextView" parent="TextFont">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="android:text">\u201223\u00B0</item>
+    </style>
+
     <style name="AdditionalWeatherTextView" parent="TextFont">
         <item name="android:textColor">?attr/colorPrimary</item>
         <item name="fontFamily">sans-serif-medium</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:text">\u201223\u00B0</item>
     </style>
 

@@ -36,9 +36,11 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/activity_scrolling.xml" value="0.2341485507246377" />
         <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.24664310954063604" />
+        <entry key="app/src/main/res/layout/fragment_city_menu.xml" value="0.1368106028217187" />
         <entry key="app/src/main/res/layout/fragment_city_weather.xml" value="0.5" />
         <entry key="app/src/main/res/layout/recycle_view_day_forecast.xml" value="0.2807971014492754" />
         <entry key="app/src/main/res/layout/recycle_view_item_day_forecast.xml" value="0.2807971014492754" />
+        <entry key="app/src/main/res/layout/recycler_view_city_item.xml" value="0.22620126926563916" />
         <entry key="app/src/main/res/layout/scrolling.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/sunset_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/sunset_sunrise.xml" value="0.2644927536231884" />

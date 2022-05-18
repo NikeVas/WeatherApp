@@ -41,7 +41,7 @@ class WeekForecastAdapter(
             item.findViewById<TextView>(R.id.daily_humidity).text = day.humidity.toString() + "%"
             item.findViewById<ImageView>(R.id.daily_icon).setImageResource(map(day.icon))
             item.findViewById<TextView>(R.id.max_min_temp).text =
-                kelvinToCelsius(day.temp_max).toString() + "/" + kelvinToCelsius(day.temp_min).toString() + "\u00B0C"
+                kelvinToCelsius(day.temp_max).toString() + "\u00B0" + "/" + kelvinToCelsius(day.temp_min).toString() + "\u00B0"
             items.add(item)
             linearLayout.addView(item)
             if (unixToDayOfWeek(day.dt) == unixToDayOfWeek(currentTime())) {
