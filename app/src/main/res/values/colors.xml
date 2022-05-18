@@ -18,4 +18,5 @@
     <color name="sunset_center">#ef8e8a</color>
     <color name="sunset_mid">#fcc9cb</color>
     <color name="sunset_end">#ffece3</color>
+    <color name="default_background_color">#f6f6f6</color>
 </resources>

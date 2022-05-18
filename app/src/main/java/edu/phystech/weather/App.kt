@@ -66,6 +66,14 @@ class App : Application() {
         return retrofit.create(WeatherAPI::class.java)
     }
 
+    fun setStartStyles() {
+        setTheme(R.style.)
+    }
+
+    fun setFinalStyles() {
+
+    }
+
     companion object {
         const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
         const val WEATHER_TOKEN = "c655b94b8f4b74939315e693439f72b2"

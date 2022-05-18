@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/transparent_white"
+    android:background="@drawable/background_sunny_day"
     >
 
     <androidx.appcompat.widget.Toolbar
@@ -25,7 +25,6 @@
             android:id="@+id/tool_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
             android:text="Долгопрудный"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
@@ -81,10 +80,11 @@
             android:id="@+id/temp_min_max_t"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/CurrentWeatherTextView"
+            style="@style/AdditionalWeatherTextView"
             android:text="13\u00B0/8\u00B0"
-            android:textSize="16sp"
+
              />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,21 +94,20 @@
                 android:id="@+id/current_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/CurrentWeatherTextView"
-                android:fontFamily="sans-serif"
+                style="@style/AdditionalWeatherTextView"
                 android:text="пн, "
                 android:textAlignment="viewStart"
-                android:textSize="16sp" />
+                 />
 
             <TextClock
                 android:id="@+id/current_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/CurrentWeatherTextView"
-                android:fontFamily="sans-serif"
+                style="@style/AdditionalWeatherTextView"
+                android:fontFamily="sans-serif-medium"
                 android:format12Hour="hh:mm"
                 android:textAlignment="viewStart"
-                android:textSize="16sp">
+                >
             </TextClock>
 
         </LinearLayout>
@@ -119,12 +118,19 @@
         android:id="@+id/feels_like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/CurrentWeatherTextView"
-        android:fontFamily="sans-serif"
+        style="@style/AdditionalWeatherTextView"
         android:text="Ощущается как \u201232\u00B0"
-        android:textSize="16sp"
         app:layout_anchor="@id/app_bar"
         app:layout_behavior=".behaviours.FeelsLikeBechavior" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_01d"
+        app:layout_anchor="@id/app_bar"
+        app:layout_behavior=".behaviours.ImageBechavior"/>
+
+
 
     <include
         android:id="@+id/nested_scroll"

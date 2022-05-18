@@ -15,6 +15,11 @@
     <dimen name="min_max_final_x">30dp</dimen>
     <dimen name="min_max_final_y">77dp</dimen>
 
+    <dimen name="image_start_x">250dp</dimen>
+    <dimen name="image_start_y">30dp</dimen>
+    <dimen name="image_final_x">260dp</dimen>
+    <dimen name="image_final_y">20dp</dimen>
+
     <dimen name="feels_like_final_x">300dp</dimen>
     <dimen name="feels_like_final_y">120dp</dimen>
 

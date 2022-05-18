@@ -68,6 +68,7 @@ class CurrentDataDescriptor(
         val scope = CoroutineScope(Dispatchers.IO)
         scope.launch {
             val data : CurrentData?
+            // TODO("Try get data from cache")
             val response = tryRequestData(city)
             if (response != null) {
                 data = convertServerResponseToCurrentData(response)
