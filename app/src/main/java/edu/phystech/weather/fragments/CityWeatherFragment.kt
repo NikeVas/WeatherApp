@@ -118,9 +118,10 @@ class CityWeatherFragment : Fragment() {
             if (dateToDay(unixToDate(day.dt)) == currentDay()) {
                 binding.nestedScroll.sunsetSunrise.sunriseTime.text = unixToHours(day.sunrise)
                 binding.nestedScroll.sunsetSunrise.sunsetTime.text = unixToHours(day.sunset)
-                binding.nestedScroll.uvWindHumidity.uvIndex.text = day.uvi.toString()
+                binding.nestedScroll.uvWindHumidity.uvIndex.text = uvToString(day.uvi)
                 binding.tempMinMaxT.text = toTempMinMaxFormat(day.temp_max, day.temp_min)
                 binding.cityName.text = city
+                binding.toolCity.text = city
                 binding.currentDay.text = abbreviateDay(currentDayOfWeek()).lowercase() + ", "
             }
         }
@@ -133,6 +134,8 @@ class CityWeatherFragment : Fragment() {
             binding.currentTemperature.text = kelvinToCelsius(it.temp).toString() + "\u00B0"
             binding.feelsLike.text = getString(R.string.feels_like) + " " + kelvinToCelsius(it.feels_like).toString() + "\u00B0"
             binding.currentTime.timeZone = it.timezone
+            binding.root.setBackgroundResource(mapBackground(it.icon))
+            binding.currentWeatherIcon.setImageResource(map(it.icon))
             binding.currentTemperature.setOnClickListener {
                 Log.e("clicked", "clicked")
                 (requireActivity() as MainActivity).setTheme(R.style.Theme_Dark)

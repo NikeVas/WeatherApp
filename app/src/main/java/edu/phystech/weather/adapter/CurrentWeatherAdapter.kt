@@ -19,7 +19,7 @@ class CurrentWeatherAdapter(
     private fun onCreateLayout() {
         if (data != null ) {
             binding.humidityValue.text = data!!.humidity.toString() + "%"
-            binding.windRate.text = data!!.wind_speed.toString() + "км/ч"
+            binding.windRate.text = data!!.wind_speed.toInt().toString() + " км/ч"
         }
     }
 }

@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 val geocoder = Geocoder(this, Locale.getDefault())
                 Log.e("mainactivity", currentCity(geocoder, it.latitude, it.longitude))
                 startFragment(currentCity(geocoder, it.latitude, it.longitude))
-                //startFragment("Алматы")
+                //startFragment("Виннипег")
             }
         } else {
             requestLocationPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)

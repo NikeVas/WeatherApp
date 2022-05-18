@@ -23,3 +23,25 @@ fun map(icon: String) : Int {
         else -> R.drawable.ic_04d
     }
 }
+
+fun mapBackground(icon: String) : Int {
+    return when(icon) {
+        "01d" -> R.drawable.background_sunny_day
+        "02d" -> R.drawable.background_sunny_day
+        "03d" -> R.drawable.background_sunny_day
+        "04d" -> R.drawable.background_sunny_day
+        "09d" -> R.drawable.background_rain
+        "10d" -> R.drawable.background_light_rain
+        "11d" -> R.drawable.background_rain
+        "13d" -> R.drawable.background_rain
+        "01n" -> R.drawable.background_night
+        "02n" -> R.drawable.background_night
+        "03n" -> R.drawable.background_night
+        "04n" -> R.drawable.background_night
+        "09n" -> R.drawable.background_rain
+        "10n" -> R.drawable.background_rain
+        "11n" -> R.drawable.background_rain
+        "13n" -> R.drawable.background_rain
+        else -> R.drawable.background_sunny_day
+    }
+}

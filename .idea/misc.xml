@@ -4,8 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.20989583333333334" />
+        <entry key="app/src/main/res/drawable/background_light_rain.xml" value="0.207" />
+        <entry key="app/src/main/res/drawable/background_night.xml" value="0.207" />
+        <entry key="app/src/main/res/drawable/background_rain.xml" value="0.207" />
         <entry key="app/src/main/res/drawable/background_rectangle.xml" value="0.234" />
         <entry key="app/src/main/res/drawable/background_rectangle_white.xml" value="0.1965" />
+        <entry key="app/src/main/res/drawable/background_sunny_day.xml" value="0.207" />
         <entry key="app/src/main/res/drawable/example_weather_icon.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/ic_01d.xml" value="0.179" />
         <entry key="app/src/main/res/drawable/ic_01n.xml" value="0.179" />
