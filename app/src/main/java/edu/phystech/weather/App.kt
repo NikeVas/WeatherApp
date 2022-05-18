@@ -2,6 +2,7 @@ package edu.phystech.weather
 
 import android.app.Application
 import android.location.Geocoder
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.room.Room
 import edu.phystech.weather.database.forecast.daily.DailyForecastDB
 import edu.phystech.weather.database.forecast.hourly.HourlyForecastDB
@@ -20,10 +21,11 @@ class App : Application() {
 
     lateinit var dailyDatabase: DailyForecastDB
     lateinit var hourlyDatabase: HourlyForecastDB
-    lateinit var geocoder  : Geocoder
+    lateinit var geocoder : Geocoder
 
     override fun onCreate() {
         super.onCreate()
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         dailyDatabase = Room.databaseBuilder(
             this,
             DailyForecastDB::class.java, "weather.daily"
@@ -40,8 +42,6 @@ class App : Application() {
         dailyDataDescriptor = DailyDataDescriptor(weatherAPI, dailyDatabase, geocoder)
         currentDataDescriptor = CurrentDataDescriptor(weatherAPI, geocoder)
     }
-
-    
 
 
     lateinit var hourlyDataDescriptor: HourlyDataDescriptor
@@ -64,13 +64,6 @@ class App : Application() {
             .build()
 
         return retrofit.create(WeatherAPI::class.java)
-    }
-
-    fun setStartStyles() {
-    }
-
-    fun setFinalStyles() {
-
     }
 
     companion object {

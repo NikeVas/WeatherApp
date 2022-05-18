@@ -42,6 +42,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun changeToDark() {
+        setTheme(R.style.Theme_Dark)
+    }
+
     private fun askLocationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED) {

@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import edu.phystech.weather.App
+import edu.phystech.weather.MainActivity
 import edu.phystech.weather.R
 import edu.phystech.weather.adapter.CurrentWeatherAdapter
 import edu.phystech.weather.adapter.DailyForecastRecyclerViewAdapter
@@ -55,16 +56,36 @@ class CityWeatherFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        setHasOptionsMenu(true)
         binding = FragmentCityWeatherBinding.inflate(inflater, container, false)
 
+        hide()
         initHourlyForecastRecyclerView()
         initWeekForecastLinerLayout()
         initCurrentWeather()
 
-        Toast.makeText(requireContext(), currentDay(), Toast.LENGTH_SHORT).show()
-
         return binding.root
+    }
+
+    private fun hide() {
+        binding.nestedScroll.root.visibility = View.GONE
+        binding.progressBar.visibility = View.VISIBLE
+        binding.appBar.visibility = View.GONE
+        binding.cityName.visibility = View.GONE
+        binding.toolbar.visibility = View.GONE
+    }
+
+    private fun showFragment() {
+        binding.nestedScroll.root.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.GONE
+        binding.appBar.visibility = View.VISIBLE
+        binding.cityName.visibility = View.VISIBLE
+        binding.toolbar.visibility = View.VISIBLE
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.toolbar.inflateMenu(R.menu.menu_scrolling)
     }
 
     private fun initHourlyForecastRecyclerView() {
@@ -73,6 +94,7 @@ class CityWeatherFragment : Fragment() {
 
         hourViewModel.data.observe(viewLifecycleOwner, Observer {
             dayAdapter.data = it
+            showFragment()
         })
 
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -99,7 +121,7 @@ class CityWeatherFragment : Fragment() {
                 binding.nestedScroll.uvWindHumidity.uvIndex.text = day.uvi.toString()
                 binding.tempMinMaxT.text = toTempMinMaxFormat(day.temp_max, day.temp_min)
                 binding.cityName.text = city
-                binding.currentDay.text = abbreviateDay(currentDayOfWeek()).lowercase() + ", " //TODO (time)
+                binding.currentDay.text = abbreviateDay(currentDayOfWeek()).lowercase() + ", "
             }
         }
     }
@@ -111,14 +133,14 @@ class CityWeatherFragment : Fragment() {
             binding.currentTemperature.text = kelvinToCelsius(it.temp).toString() + "\u00B0"
             binding.feelsLike.text = getString(R.string.feels_like) + " " + kelvinToCelsius(it.feels_like).toString() + "\u00B0"
             binding.currentTime.timeZone = it.timezone
+            binding.currentTemperature.setOnClickListener {
+                Log.e("clicked", "clicked")
+                (requireActivity() as MainActivity).setTheme(R.style.Theme_Dark)
+            }
         })
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-
-    }
 
     companion object {
         fun newInstance(city: String) : CityWeatherFragment {

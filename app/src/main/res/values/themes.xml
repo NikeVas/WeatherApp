@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Weather" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Light" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/black_text</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -11,19 +11,15 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="background">@drawable/background_rectangle_white</item>
 
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.Weather.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>android:
-    </style>
-
     <style name="BackgroundRectangle">
-        <item name="android:background">@drawable/background_rectangle_white</item>
+        <item name="android:background">?attr/background</item>
     </style>
 
 
@@ -51,7 +47,7 @@
         <item name="fontFamily">sans-serif-medium</item>
         <item name="android:text">понедельник</item>
     </style>
-    
+
     <style name="DailyForecastLinearLayoutHumidityTextViewStyle" parent="TextFont">
         <item name="android:textSize">12sp</item>
         <item name="fontFamily">sans-serif-light</item>

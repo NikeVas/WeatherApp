@@ -18,8 +18,7 @@
         app:layout_behavior=".behaviours.ToolbarBechavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:menu="@menu/menu_scrolling">
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/tool_city"
@@ -49,6 +48,14 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/black"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/current_temperature"
