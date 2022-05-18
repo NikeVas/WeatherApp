@@ -1,6 +1,7 @@
 package edu.phystech.weather.descriptors.entities
 
 data class CurrentData (
+    val timezone: String,
     val sunrise: Long,
     val sunset: Long,
 

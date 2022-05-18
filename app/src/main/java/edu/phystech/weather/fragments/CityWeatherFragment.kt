@@ -100,7 +100,6 @@ class CityWeatherFragment : Fragment() {
                 binding.tempMinMaxT.text = toTempMinMaxFormat(day.temp_max, day.temp_min)
                 binding.cityName.text = city
                 binding.currentDay.text = abbreviateDay(currentDayOfWeek()).lowercase() + ", " //TODO (time)
-                binding.currentTime.timeZone = city
             }
         }
     }
@@ -110,7 +109,8 @@ class CityWeatherFragment : Fragment() {
         currentWeatherViewModel.data.observe(viewLifecycleOwner, Observer {
             currentWeatherAdapter.data = it
             binding.currentTemperature.text = kelvinToCelsius(it.temp).toString() + "\u00B0"
-            binding.feelsLike.text = getString(R.string.feels_like) + kelvinToCelsius(it.feels_like).toString() + "\u00B0"
+            binding.feelsLike.text = getString(R.string.feels_like) + " " + kelvinToCelsius(it.feels_like).toString() + "\u00B0"
+            binding.currentTime.timeZone = it.timezone
         })
 
     }

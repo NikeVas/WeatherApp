@@ -45,6 +45,7 @@ class CurrentDataDescriptor(
     private fun convertServerResponseToCurrentData(response: OneCallData) : CurrentData? {
         val current = response.current!!
         return CurrentData(
+            response.timezone!!,
             current.sunrise!!,
             current.sunset!!,
 

@@ -41,6 +41,8 @@ class App : Application() {
         currentDataDescriptor = CurrentDataDescriptor(weatherAPI, geocoder)
     }
 
+    
+
 
     lateinit var hourlyDataDescriptor: HourlyDataDescriptor
     lateinit var dailyDataDescriptor: DailyDataDescriptor
