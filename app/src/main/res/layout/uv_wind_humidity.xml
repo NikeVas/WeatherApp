@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/BackgroundRectangle"
+    android:padding="16dp"
+    android:weightSum="3">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_uv_index">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/uv_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/UVWindHumidityNamesTextView"
+            android:text="@string/UV_index">
+        </TextView>
+
+        <TextView
+            android:id="@+id/uv_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Низкий"
+            style="@style/UVWindHumidityValuesTextView">
+        </TextView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_wind">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/wind_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wind"
+            style="@style/UVWindHumidityNamesTextView">
+        </TextView>
+
+        <TextView
+            android:id="@+id/wind_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="23 км/ч"
+            style="@style/UVWindHumidityValuesTextView">
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_water_drop">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/humidity_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/humidity"
+            style="@style/UVWindHumidityNamesTextView">
+        </TextView>
+
+        <TextView
+            android:id="@+id/humidity_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="57%"
+            style="@style/UVWindHumidityValuesTextView">
+        </TextView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

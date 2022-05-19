@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="8dp">
+
+    <TextView
+        android:id="@+id/day"
+        android:text="понедельник"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="17sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|end"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_water_drop">
+        </ImageView>
+
+
+        <TextView
+            android:id="@+id/daily_humidity"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="8dp"
+            android:text="30%"
+            android:theme="@style/DailyForecastLinearLayoutHumidityTextViewStyle">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/daily_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/example_weather_icon">
+        </ImageView>
+
+
+
+        <TextView
+            android:id="@+id/max_min_temp"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:gravity="right"
+            android:theme="@style/DailyForecastLinearLayoutTemperatureTextViewStyle">
+
+        </TextView>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

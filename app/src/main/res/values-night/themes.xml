@@ -1,0 +1,105 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Weather" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.Weather.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>android:
+    </style>
+
+    <style name="BackgroundRectangle">
+        <item name="android:background">@drawable/background_rectangle</item>
+    </style>
+
+
+    <style name="TextFont">
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <style name="HourlyForecastRecyclerViewTimeTextView" parent="TextFont">
+        <item name="android:textColor">?attr/colorSecondary</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+    <style name="HourlyForecastRecyclerViewTemperatureTextView" parent="TextFont">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">21\u00B0"</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="DailyForecastLinearLayoutDayTextView" parent="TextFont">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:text">понедельник</item>
+    </style>
+
+    <style name="DailyForecastLinearLayoutHumidityTextViewStyle" parent="TextFont">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
+    </style>
+
+    <style name="DailyForecastLinearLayoutTemperatureTextViewStyle" parent="TextFont">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">21/8\u00B0"</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="SunsetSunriseTextView" parent="TextFont">
+        <item name="android:textColor">?attr/colorSecondary</item>
+        <item name="android:textSize">19sp</item>
+    </style>
+
+    <style name="SunsetTextView" parent="SunsetSunriseTextView">
+        <item name="android:text">@string/sunset</item>
+    </style>
+
+    <style name="SunriseTextView" parent="SunsetSunriseTextView">
+        <item name="android:text">@string/sunrise</item>
+    </style>
+
+    <style name="SunsetSunriseTimeTextView" parent="TextFont">
+        <item name="android:text">00:00</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="UVWindHumidityNamesTextView" parent="TextFont">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="UVWindHumidityValuesTextView" parent="TextFont">
+        <item name="android:textColor">?attr/colorSecondary</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="CurrentWeatherTextView">
+        <item name="android:textSize">60sp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="fontFamily">sans-serif-thin</item>
+        <item name="android:text">\u201223\u00B0</item>
+    </style>
+
+    <style name="AdditionalText" parent="TextFont">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
+    </style>
+</resources>

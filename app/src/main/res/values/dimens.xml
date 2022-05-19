@@ -1,0 +1,34 @@
+<resources>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="wind_value">14sp</dimen>
+    <dimen name="wind">17</dimen>
+
+    <dimen name="temperature_start_x">40dp</dimen>
+    <dimen name="temperature_start_y">60dp</dimen>
+    <dimen name="temperature_final_x">35dp</dimen>
+    <dimen name="temperature_final_y">50dp</dimen>
+
+    <dimen name="min_max_start_x">40dp</dimen>
+    <dimen name="min_max_start_y">220dp</dimen>
+    <dimen name="min_max_final_x">30dp</dimen>
+    <dimen name="min_max_final_y">77dp</dimen>
+
+    <dimen name="image_start_x">230dp</dimen>
+    <dimen name="image_start_y">30dp</dimen>
+    <dimen name="image_final_x">240dp</dimen>
+    <dimen name="image_final_y">20dp</dimen>
+
+    <dimen name="feels_like_final_x">300dp</dimen>
+    <dimen name="feels_like_final_y">120dp</dimen>
+
+    <dimen name="city_x">40dp</dimen>
+    <dimen name="city_y">140dp</dimen>
+
+    <dimen name="holder_x">40dp</dimen>
+    <dimen name="holder_y">120dp</dimen>
+
+    <dimen name="sholder_x">130dp</dimen>
+    <dimen name="sholder_y">60dp</dimen>
+</resources>

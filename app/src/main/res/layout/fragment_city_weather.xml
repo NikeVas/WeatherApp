@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/background_sunny_day"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:layout_anchor="@id/app_bar"
+        app:layout_behavior=".behaviours.ToolbarBechavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/tool_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Долгопрудный"
+            style="@style/ToolbarCityTextView"
+            android:textColor="@android:color/black" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:alpha="0"
+        android:background="@color/black">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@color/teal_700"
+            app:layout_scrollFlags="scroll|snap">
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/black"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/current_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/CurrentWeatherTextView"
+        app:layout_anchor="@id/app_bar"
+        app:layout_behavior=".behaviours.TemperatureBehavior" />
+
+    <TextView
+        android:id="@+id/city_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Долгопрудный"
+        style="@style/CityTextView"
+        app:layout_anchor="@id/app_bar"
+        app:layout_behavior=".behaviours.CityBechavior" />
+
+    <LinearLayout
+        android:id="@+id/temp_min_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/app_bar"
+        app:layout_behavior=".behaviours.MinMaxBechavior"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/temp_min_max_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AdditionalWeatherTextView"
+            android:text="13\u00B0/8\u00B0"
+
+             />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/current_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AdditionalWeatherTextView"
+                android:text="пн, "
+                android:textAlignment="viewStart"
+                 />
+
+            <TextClock
+                android:id="@+id/current_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AdditionalWeatherTextView"
+                android:fontFamily="sans-serif-medium"
+                android:format12Hour="hh:mm"
+                android:textAlignment="viewStart"
+                >
+            </TextClock>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/feels_like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/AdditionalWeatherTextView"
+        android:text="Ощущается как \u201232\u00B0"
+        app:layout_anchor="@id/app_bar"
+        app:layout_behavior=".behaviours.FeelsLikeBechavior" />
+
+    <ImageView
+        android:id="@+id/current_weather_icon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_01d"
+        app:layout_anchor="@id/app_bar"
+        app:layout_behavior=".behaviours.ImageBechavior"/>
+
+
+
+    <include
+        android:id="@+id/nested_scroll"
+        layout="@layout/scrolling" />
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
