@@ -1,4 +1,4 @@
-package edu.phystech.weather.fragments
+package edu.phystech.weather.screen.cityweather.viewmodels
 
 import android.app.Activity
 import androidx.lifecycle.LiveData
@@ -7,8 +7,6 @@ import androidx.lifecycle.ViewModel
 import edu.phystech.weather.descriptors.HourlyDataDescriptor
 import edu.phystech.weather.descriptors.HourlyDataSetterCallback
 import edu.phystech.weather.descriptors.entities.Hour
-import edu.phystech.weather.models.TimeListener
-import edu.phystech.weather.models.HourlyForecastService
 
 class HourlyWeatherViewModel (
     private val descriptor: HourlyDataDescriptor,

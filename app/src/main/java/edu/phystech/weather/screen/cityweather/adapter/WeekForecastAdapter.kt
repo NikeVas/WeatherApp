@@ -1,22 +1,18 @@
-package edu.phystech.weather.adapter
+package edu.phystech.weather.screen.cityweather.adapter
 
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.content.res.TypedArrayUtils.getString
-import androidx.core.content.res.TypedArrayUtils.getText
 import edu.phystech.weather.R
+import edu.phystech.weather.databinding.FragmentCityWeatherBinding
 import edu.phystech.weather.descriptors.entities.Day
-import edu.phystech.weather.descriptors.entities.Hour
 import edu.phystech.weather.utils.*
 
 class WeekForecastAdapter(
-    val linearLayout: LinearLayout,
-    val layoutInflater: LayoutInflater
+    private val binding: FragmentCityWeatherBinding,
+    private val layoutInflater: LayoutInflater
 ) {
 
     var data: List<Day> = emptyList()
@@ -29,7 +25,7 @@ class WeekForecastAdapter(
 
     fun onCreateLayout() {
         if (items.isNotEmpty()) {
-            linearLayout.removeAllViews()
+            binding.nestedScroll.weekForecast.removeAllViews()
             items.clear()
         }
         Log.e("weekForecastFirst", unixToDate(data[0].dt))
@@ -42,11 +38,18 @@ class WeekForecastAdapter(
             item.findViewById<ImageView>(R.id.daily_icon).setImageResource(map(day.icon))
             item.findViewById<TextView>(R.id.max_min_temp).text =
                 kelvinToCelsius(day.temp_max).toString() + "\u00B0" + "/" + kelvinToCelsius(day.temp_min).toString() + "\u00B0"
-            items.add(item)
-            linearLayout.addView(item)
-            if (unixToDayOfWeek(day.dt) == unixToDayOfWeek(currentTime())) {
+
+            if (dateToDay(unixToDate(day.dt)) == currentDay()) {
                 item.findViewById<TextView>(R.id.day).text = "Сегодня"
+                binding.nestedScroll.sunsetSunrise.sunriseTime.text = unixToHours(day.sunrise)
+                binding.nestedScroll.sunsetSunrise.sunsetTime.text = unixToHours(day.sunset)
+                binding.nestedScroll.uvWindHumidity.uvIndex.text = uvToString(day.uvi)
+                binding.tempMinMaxT.text = toTempMinMaxFormat(day.temp_max, day.temp_min)
+                binding.currentDay.text = abbreviateDay(currentDayOfWeek()).lowercase() + ", "
             }
+
+            items.add(item)
+            binding.nestedScroll.weekForecast.addView(item)
         }
     }
 }

@@ -101,7 +101,7 @@
     <style name="CityTextView" parent="TextFont">
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">?attr/colorPrimary</item>
-        <item name="fontFamily">sans-serif-thin</item>
+        <item name="fontFamily">sans-serif</item>
         <item name="android:text">\u201223\u00B0</item>
     </style>
 

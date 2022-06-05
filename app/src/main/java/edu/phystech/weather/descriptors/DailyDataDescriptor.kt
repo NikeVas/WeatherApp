@@ -68,8 +68,8 @@ class DailyDataDescriptor(
 
 
     private suspend fun tryRequestData(city : String) : OneCallData? {
-        val coord = getCoordByCity(city)
         return try {
+            val coord = getCoordByCity(city)
             val response = weatherAPI.oneCallApi(coord.first, coord.second, App.WEATHER_TOKEN)
             if (response.code() != 200) {
                 null

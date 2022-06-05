@@ -1,25 +1,23 @@
-package edu.phystech.weather.fragments
+package edu.phystech.weather.screen.cityweather.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import edu.phystech.weather.App
-import edu.phystech.weather.MainActivity
 import edu.phystech.weather.R
-import edu.phystech.weather.adapter.CurrentWeatherAdapter
-import edu.phystech.weather.adapter.DailyForecastRecyclerViewAdapter
-import edu.phystech.weather.adapter.WeekForecastAdapter
+import edu.phystech.weather.screen.cityweather.adapter.CurrentWeatherAdapter
+import edu.phystech.weather.screen.cityweather.adapter.DailyForecastRecyclerViewAdapter
+import edu.phystech.weather.screen.cityweather.adapter.WeekForecastAdapter
 import edu.phystech.weather.databinding.FragmentCityWeatherBinding
-import edu.phystech.weather.utils.*
-import java.time.LocalDateTime
+import edu.phystech.weather.screen.cityweather.viewmodels.CurrentWeatherViewModel
+import edu.phystech.weather.screen.cityweather.viewmodels.DailyWeatherViewModel
+import edu.phystech.weather.screen.cityweather.viewmodels.HourlyWeatherViewModel
 
 class CityWeatherFragment : Fragment() {
     private lateinit var binding : FragmentCityWeatherBinding
@@ -61,6 +59,7 @@ class CityWeatherFragment : Fragment() {
 
         hide()
         initHourlyForecastRecyclerView()
+        initCityViews()
         initWeekForecastLinerLayout()
         initCurrentWeather()
 
@@ -106,40 +105,21 @@ class CityWeatherFragment : Fragment() {
 
     private fun initWeekForecastLinerLayout() {
         val layoutInflater = LayoutInflater.from(requireContext())
-        weekAdapter = WeekForecastAdapter(weekLinearLayout, layoutInflater)
+        weekAdapter = WeekForecastAdapter(binding, layoutInflater)
         dailyViewModel.data.observe(viewLifecycleOwner, Observer {
             weekAdapter.data = it
-            initSunriseSunsetView()
         })
     }
 
-    private fun initSunriseSunsetView() {
-        for (day in weekAdapter.data) {
-            if (dateToDay(unixToDate(day.dt)) == currentDay()) {
-                binding.nestedScroll.sunsetSunrise.sunriseTime.text = unixToHours(day.sunrise)
-                binding.nestedScroll.sunsetSunrise.sunsetTime.text = unixToHours(day.sunset)
-                binding.nestedScroll.uvWindHumidity.uvIndex.text = uvToString(day.uvi)
-                binding.tempMinMaxT.text = toTempMinMaxFormat(day.temp_max, day.temp_min)
-                binding.cityName.text = city
-                binding.toolCity.text = city
-                binding.currentDay.text = abbreviateDay(currentDayOfWeek()).lowercase() + ", "
-            }
-        }
+    private fun initCityViews() {
+        binding.cityName.text = city
+        binding.toolCity.text = city
     }
 
     private fun initCurrentWeather() {
-        currentWeatherAdapter = CurrentWeatherAdapter(binding.nestedScroll.uvWindHumidity)
+        currentWeatherAdapter = CurrentWeatherAdapter(binding, requireContext())
         currentWeatherViewModel.data.observe(viewLifecycleOwner, Observer {
             currentWeatherAdapter.data = it
-            binding.currentTemperature.text = kelvinToCelsius(it.temp).toString() + "\u00B0"
-            binding.feelsLike.text = getString(R.string.feels_like) + " " + kelvinToCelsius(it.feels_like).toString() + "\u00B0"
-            binding.currentTime.timeZone = it.timezone
-            binding.root.setBackgroundResource(mapBackground(it.icon))
-            binding.currentWeatherIcon.setImageResource(map(it.icon))
-            binding.currentTemperature.setOnClickListener {
-                Log.e("clicked", "clicked")
-                (requireActivity() as MainActivity).setTheme(R.style.Theme_Dark)
-            }
         })
 
     }

@@ -4,21 +4,14 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import edu.phystech.weather.databinding.ActivityMainBinding
-import edu.phystech.weather.descriptors.DailyDataDescriptor
-import edu.phystech.weather.descriptors.HourlyDataDescriptor
-import edu.phystech.weather.descriptors.entities.DailyData
-import edu.phystech.weather.fragments.CityWeatherFragment
+import edu.phystech.weather.screen.cityweather.fragment.CityWeatherFragment
 import edu.phystech.weather.utils.currentCity
-import edu.phystech.weather.utils.currentTime
-import edu.phystech.weather.utils.unixToDate
 import java.util.*
 
 
@@ -51,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             == PackageManager.PERMISSION_GRANTED) {
             fusedLocationClient.lastLocation.addOnSuccessListener {
                 val geocoder = Geocoder(this, Locale.getDefault())
-                Log.e("mainactivity", currentCity(geocoder, it.latitude, it.longitude))
+                //Log.e("mainactivity", currentCity(geocoder, it.latitude, it.longitude))
                 startFragment(currentCity(geocoder, it.latitude, it.longitude))
                 //startFragment("Виннипег")
             }

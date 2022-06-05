@@ -20,4 +20,5 @@
     <color name="sunset_end">#ffece3</color>
     <color name="default_background_color">#f6f6f6</color>
     <color name="transparent">#00000000</color>
+    <color name="clouds_main">#bfe2fe</color>
 </resources>

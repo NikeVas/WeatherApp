@@ -1,6 +1,5 @@
-package edu.phystech.weather.adapter
+package edu.phystech.weather.screen.cityweather.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -13,15 +12,16 @@ class DailyForecastRecyclerViewAdapter : RecyclerView.Adapter<DailyForecastRecyc
     var data: List<Hour> = emptyList()
         set(value) {
             for (i in (0..value.size - 1)) {
-                Log.e("aboba", unixToDate(value[i].dt).toString())
-                Log.e("current", unixToDate(currentTime()))
                 if (value[i].dt >= currentTime()) {
-                    field = value.subList(i, i + 24)
+                    if (i + NUMBER_OF_DISPLAYING_HOURS < value.size) {
+                        field = value.subList(i, i + NUMBER_OF_DISPLAYING_HOURS)
+                    } else {
+                        field = value
+                    }
                     break
                 }
             }
             //field = value.subList(0, 24)
-            Log.e("recview", value.size.toString())
             notifyDataSetChanged()
         }
 
@@ -37,11 +37,8 @@ class DailyForecastRecyclerViewAdapter : RecyclerView.Adapter<DailyForecastRecyc
 
     override fun onBindViewHolder(holder: TimeTemperatureViewHolder, position: Int) {
         val item = data[position]
-        Log.e("fragment", data.size.toString())
         with(holder.binding) {
             temperature.text = kelvinToCelsius(item.temp).toString() + "\u00B0"
-            Log.e("offset", item.timezone_offset.toString())
-            Log.e("offset", currentTimeZoneOffset().toString())
             time.text = unixToDate(item.dt - currentTimeZoneOffset() + item.timezone_offset).subSequence(11, 16)
             hourlyWeatherIcon.setImageResource(map(item.icon))
         }
@@ -49,5 +46,9 @@ class DailyForecastRecyclerViewAdapter : RecyclerView.Adapter<DailyForecastRecyc
 
     override fun getItemCount(): Int {
         return data.size
+    }
+
+    companion object {
+        const val NUMBER_OF_DISPLAYING_HOURS = 24
     }
 }

@@ -1,4 +1,4 @@
-package edu.phystech.weather.fragments
+package edu.phystech.weather.screen.cityweather.viewmodels
 
 import android.app.Activity
 import androidx.lifecycle.LiveData
@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import edu.phystech.weather.descriptors.CurrentDataDescriptor
 import edu.phystech.weather.descriptors.CurrentDataSetterCallback
 import edu.phystech.weather.descriptors.entities.CurrentData
-import edu.phystech.weather.descriptors.entities.Day
 
 class CurrentWeatherViewModel(
     private val descriptor: CurrentDataDescriptor,
